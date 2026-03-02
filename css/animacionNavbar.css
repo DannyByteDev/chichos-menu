@@ -1,0 +1,26 @@
+.categories li {
+  padding: 8px 14px;
+  border-radius: 20px;
+  background: #f5f5f5;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  color: #333;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.categories li.active {
+  background: linear-gradient(135deg, #ff4d00, #ff7a00);
+  color: #ffffff;
+  box-shadow: 0 6px 15px rgba(255, 77, 0, 0.3);
+  transform: scale(1.05);
+}   
+.categories-bar {
+  transition: all 0.3s ease;
+}
+
+.categories-bar.sticky-active {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}

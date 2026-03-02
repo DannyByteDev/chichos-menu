@@ -1,0 +1,1315 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chichos asados y comidas rapidas</title>
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="icon" type="ico" href="img/logo.ico" />
+    <link rel="stylesheet" href="css/animacion.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/Mascota.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/animacionNavbar.css">
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="navbar-top">
+        <div class="brand">
+          <img src="img/logo.png" alt="Logo Chicho’s" class="brand-logo" />
+          <div class="brand-text">
+            <h1>Chicho’s Asados</h1>
+            <p>Comidas rápidas</p>
+          </div>
+          <div class="estado-container">
+            <span id="estadoNegocio" class="estado-indicador"></span>
+            <span id="contadorApertura" class="estado-contador"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="navbar-info">
+        <span
+          ><i class="fa-sharp-duotone fa-solid fa-map-pin"></i> Los
+          alcazares</span
+        ><br />
+        <span>Entrega 30 - 40 min</span>
+      </div>      
+    </header>
+    <div class="categories-bar">
+        <ul class="categories">
+          <a class="a" href="#Salchipapas"
+            ><li class="active" data-target="salchipapas">Salchipapas</li></a
+          >
+          <a class="a" href="#Hamburguesas"
+            ><li data-target="hamburguesas" id="hamburguesas">
+              Hamburguesas
+            </li></a
+          >
+          <a class="a" href="#Asados"><li data-target="asados">Asados</li></a>
+          <a class="a" href="#Combos"><li data-target="combos">Combos</li></a>
+          <a class="a" href="#Perros"><li data-target="perros">Perros</li></a>
+          <a class="a" href="#Adicciones"
+            ><li data-target="adiciones">Adiciones</li></a
+          >
+          <a class="a" href="#Bebidas"
+            ><li data-target="bebidas">Bebidas</li></a
+          >
+        </ul>
+      </div>
+    <section id="Salchipapas">
+      <h2>Salchipapas</h2>
+
+      <div class="products-grid">
+        <div class="product-card" data-id="Maxichichos">
+          <div class="product-info">
+            <h3>maxichichos</h3>
+            <p>
+              papa amarilla, papa a la francesa, salchicha, costilla, cebolla,
+              maicitos, pollo, cerdo, queso cheddar, tocineta y salsas
+            </p>
+            <span class="price">$50.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/Salchipapas/SalchiMaxichichos.png"
+            alt="Maxichichos"
+            class="product-img"
+          />
+        </div>
+        <div class="product-card" data-id="Megafamiliar">
+          <div class="product-info">
+            <h3>Mega familiar</h3>
+            <p>
+              papa amarilla, papa a la francesa, salchicha, costilla, cebolla,
+              maicitos, pollo desmechado, carne de hamburguesa, queso, tocineta
+              y salsas
+            </p>
+            <span class="price">$30.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/Salchipapas/SalchiMegafamiliar.png"
+            alt="Megafamiliar"
+            class="product-img"
+          />
+        </div>
+        <div class="product-card" data-id="Mega">
+          <div class="product-info">
+            <h3>Mega</h3>
+            <p>
+              papa amarilla, papa a la francesa, salchicha, costilla, cebolla,
+              maicitos, pollo desmechado, queso, tocineta y salsas
+            </p>
+            <span class="price">$25.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/Salchipapas/SalchiMega.png"
+            alt="Mega"
+            class="product-img"
+          />
+        </div>
+        <div class="product-card" data-id="Madura">
+          <div class="product-info">
+            <h3>Madura</h3>
+            <p>
+              papa amarilla, papa a la francesa, salchicha, costilla, maduritos,
+              maicitos, queso, tocineta y salsas
+            </p>
+            <span class="price">$22.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/Salchipapas/salchiMadura.png"
+            alt="Madura"
+            class="product-img"
+          />
+        </div>
+        <div class="product-card" data-id="Mixta">
+          <div class="product-info">
+            <h3>Mixta</h3>
+            <p>
+              papa amarilla, papa a la francesa, salchicha, costilla, cebolla,
+              queso, tocineta y salsas
+            </p>
+            <span class="price">$22.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/Salchipapas/salchiMixta.png"
+            alt="Mixta"
+            class="product-img"
+          />
+        </div>
+        <div class="product-card" data-id="SalchiBurguer">
+          <div class="product-info">
+            <h3>Burguer</h3>
+            <p>
+              papa amarilla, papa a la francesa, salchicha, cebolla, queso,
+              carne de hamburguesa y salsas
+            </p>
+            <span class="price">$15.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/Salchipapas/salchiburguer.png"
+            alt="Salchiburger"
+            class="product-img"
+          />
+        </div>
+        <div class="product-card" data-id="SalchiEspecial">
+          <div class="product-info">
+            <h3>Especial</h3>
+            <p>
+              papa amarilla, papa a la francesa, salchicha, cebolla, queso,
+              tocineta y salsas
+            </p>
+            <span class="price">$15.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/Salchipapas/salchiEspecial.png"
+            alt="Especial"
+            class="product-img"
+          />
+        </div>
+        <div class="product-card" data-id="Gratinada">
+          <div class="product-info">
+            <h3>Gratinada</h3>
+            <p>papa a la francesa, salchicha, queso y salsas</p>
+            <span class="price">$12.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/Salchipapas/SalchiGratinada.png"
+            alt="gratinada"
+            class="product-img"
+          />
+        </div>
+        <div class="product-card" data-id="SalchiSencilla">
+          <div class="product-info">
+            <h3>Sencilla</h3>
+            <p>papa a la francesa, salchicha y salsas</p>
+            <span class="price">$9.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/Salchipapas/salchiSencilla.png"
+            alt="Sencilla"
+            class="product-img"
+          />
+        </div>
+        <div class="product-card" data-id="SalchiCriolla">
+          <div class="product-info">
+            <h3>Criolla</h3>
+            <p>papa amarilla, salchicha y salsas</p>
+            <span class="price">$9.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/Salchipapas/salchiSencilla.png"
+            alt="Criolla"
+            class="product-img"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section id="Hamburguesas">
+      <h2>Hamburguesas</h2>
+
+      <div class="products-grid">
+        <div class="product-card" data-id="Patrona">
+          <div class="product-info">
+            <h3>Patrona</h3>
+            <p>
+              Carne angus, filete de pollo, carne al barril, ripio de papa,
+              queso cheddar, queso blanco, tocineta, cebolla, lechuga, tomate,
+              salsa y guacamole
+            </p>
+            <span class="price">$26.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/Hamburguesas/patrona.png"
+            alt="mega familiar"
+            class="product-img"
+          />
+        </div>
+        <div class="product-card" data-id="Angust">
+          <div class="product-info">
+            <h3>Angust</h3>
+            <p>
+              Carne angus, queso cheddar, queso blanco, cebolla, lechuga,
+              tomate, salsa + porcion de papas
+            </p>
+            <span class="price">$20.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/Hamburguesas/angust.png"
+            alt="mega familiar"
+            class="product-img"
+          />
+        </div>
+        <div class="product-card" data-id="Depollo">
+          <div class="product-info">
+            <h3>De pollo</h3>
+            <p>
+              Filete de pollo, queso cheddar, queso blanco, cebolla, lechuga,
+              tomate, salsa + porcion de papas
+            </p>
+            <span class="price">$17.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/Hamburguesas/pollo.jpg"
+            alt="mega familiar"
+            class="product-img"
+          />
+        </div>
+        <div class="product-card" data-id="HambEspecial">
+          <div class="product-info">
+            <h3>Especial</h3>
+            <p>
+              Doble carne de res, ripio de papa, doble queso, tocineta, lechuga,
+              cebolla, tomate y salsas(Verde, Piña, Roja, Mostaza y BBQ).
+            </p>
+            <span class="price">$20.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/Hamburguesas/especial.png"
+            alt="Hamburguesa Especial"
+            class="product-img"
+          />
+        </div>
+        <div class="product-card" data-id="HambuSuper">
+          <div class="product-info">
+            <h3>Super</h3>
+            <p>
+              Carne de res, ripio de papa, doble queso, tocineta, lechuga,
+              cebolla, tomate y salsas(Verde, Piña, Roja, Mostaza y BBQ).
+            </p>
+            <span class="price">$14.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/Hamburguesas/super.png"
+            alt="Hamburguesa Super"
+            class="product-img"
+          />
+        </div>
+        <div class="product-card" data-id="HambuJunior">
+          <div class="product-info">
+            <h3>Junior</h3>
+            <p>
+              Carne de res, ripio de papa, doble queso, tocineta y salsas(Verde,
+              Piña, Roja, Mostaza y BBQ).
+            </p>
+            <span class="price">$10.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/Hamburguesas/junior.png"
+            alt="Hamburguesa Super"
+            class="product-img"
+          />
+        </div>
+      </div>
+    </section>
+    <section id="Asados">
+      <h2>Asados</h2>
+
+      <div class="products-grid">
+        <div class="product-card" data-id="PicadaBarrilFamiliar">
+          <div class="product-info">
+            <h3>Picada al Barril familiar</h3>
+            <p>
+              800gr de proteina<br />
+              Costilla san luis, panceta, bondiola de cerdo choriao. acompañado
+              de maduro, papa salada, arepa y piña
+            </p>
+            <span class="price">$60.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/Asados/picadaal barril.jpg"
+            alt="PicadaBarrilFamiliar"
+            class="product-img"
+          />
+        </div>
+        <div class="product-card" data-id="PicadaBarrilDos">
+          <div class="product-info">
+            <h3>Picada al Barril para 2</h3>
+            <p>
+              600gr de proteina<br />
+              Costilla san luis, panceta, bondiola de cerdo choriao. acompañado
+              de maduro, papa salada, arepa y piña
+            </p>
+            <span class="price">$45.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/Asados/picadaal barril.jpg"
+            alt="PicadaBarrilDos"
+            class="product-img"
+          />
+        </div>
+        <div class="product-card" data-id="PicadaBarrilPersonal">
+          <div class="product-info">
+            <h3>Picada al Barril personal</h3>
+            <p>
+              300gr de proteina<br />
+              Costilla san luis, panceta, bondiola de cerdo choriao. acompañado
+              de maduro, papa salada, arepa y piña
+            </p>
+            <span class="price">$32.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/Asados/picadaal barril.jpg"
+            alt="PicadaBarrilPersonal"
+            class="product-img"
+          />
+        </div>
+        <div class="product-card" data-id="PicadaTradicionalFamiliar">
+          <div class="product-info">
+            <h3>Picada tradicional familiar</h3>
+            <p>
+              Cerdo, Pollo, Costilla BBQ, chorizo, papa a la francesa y papa
+              criolla, tostada de platano y trozos de tomate
+            </p>
+            <span class="price">$48.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/Asados/picadatradicional.png "
+            alt="PicadaTradicionalFamiliar"
+            class="product-img"
+          />
+        </div>
+        <div class="product-card" data-id="PicadaTradicionalDos">
+          <div class="product-info">
+            <h3>Picada tradiccional para 2</h3>
+            <p>
+              Cerdo, Pollo, Costilla BBQ, chorizo, papa a la francesa y papa
+              criolla, tostada de platano y trozos de tomate
+            </p>
+            <span class="price">$32.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/Asados/picadatradicional.png"
+            alt="PicadaTradicionalDos"
+            class="product-img"
+          />
+        </div>
+        <div class="product-card" data-id="MaduroGratinadoBarril">
+          <div class="product-info">
+            <h3>Maduro gratinado al barril</h3>
+            <p>Maduro, queso y carne al barril</p>
+            <span class="price">$12.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/Asados/maduro.jpg"
+            alt="MaduroGratinadoBarril"
+            class="product-img"
+          />
+        </div>
+        <div class="product-card" data-id="CostillaSanLuis">
+          <div class="product-info">
+            <h3>Costilla San Luis</h3>
+            <p>
+              300gr de costilla san luis <br />
+              papa amarilla, arepa y salsa de la casa
+            </p>
+            <span class="price">$30.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/Asados/costillasanluis.jpg"
+            alt="CostillaSanLuis"
+            class="product-img"
+          />
+        </div>
+        <div class="product-card" data-id="FileteCerdo">
+          <div class="product-info">
+            <h3>Filete de cerdo</h3>
+            <p>
+              200gr de Filete de cerdo <br />
+              Acompañado de papas a la francesa y ensalada
+            </p>
+            <span class="price">$22.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/Asados/filete de cerdo.png"
+            alt="FileteCerdo"
+            class="product-img"
+          />
+        </div>
+        <div class="product-card" data-id="FiletePollo">
+          <div class="product-info">
+            <h3>Filete de pollo</h3>
+            <p>
+              200gr de Filete de pollo <br />
+              Acompañado de papas a la francesa y ensalada
+            </p>
+            <span class="price">$22.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/Asados/filete de pollo.png"
+            alt="FiletePollo"
+            class="product-img"
+          />
+        </div>
+        <div class="product-card" data-id="CarneAsada">
+          <div class="product-info">
+            <h3>Carne asada</h3>
+            <p>
+              200gr de Carne de res <br />
+              Acompañado de papas a la francesa y ensalada
+            </p>
+            <span class="price">$22.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/Asados/carneasada.jpg"
+            alt="CarneAsada"
+            class="product-img"
+          />
+        </div>
+        <div class="product-card" data-id="Chorizo">
+          <div class="product-info">
+            <h3>Chorizo de cerdo mini</h3>
+            <p>Acompañado de papas criolla</p>
+            <span class="price">$7.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/Asados/chorizo.jpg"
+            alt="Chorizo"
+            class="product-img"
+          />
+        </div>
+      </div>
+    </section>
+    <section id="Combos">
+      <h2>Combos</h2>
+
+      <div class="products-grid">
+        <div class="product-card" data-id="LaDoble">
+          <div class="product-info">
+            <h3>2x1 Hamburguesas Doble</h3>
+            <p>
+              Doble Carne de 120gr, lechuga crespa, tomate, queso, ripio de
+              papas y salsa de la casa
+            </p>
+            <span class="price">$26.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/combos/Ladoble.jpg"
+            alt="LaDoble"
+            class="product-img"
+          />
+        </div>
+        <div class="product-card" data-id="LaCallejera">
+          <div class="product-info">
+            <h3>2x1 Hamburguesas callejeras</h3>
+            <p>
+              Carne de 120gr, jamon, lechuga crespa, tomate, cebolla
+              caramelizada, queso, ripio de papas y salsa de la casa
+            </p>
+            <span class="price">$22.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/combos/callejera.jpg"
+            alt="LaCallejera"
+            class="product-img"
+          />
+        </div>
+        <div class="product-card" data-id="LaClasica">
+          <div class="product-info">
+            <h3>2x1 Hamburguesas clasicas</h3>
+            <p>
+              Carne de 120Gr, lechuga crespa, tomate, queso, ripio de papas y
+              salsa de la casa
+            </p>
+            <span class="price">$18.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/combos/callejera.jpg"
+            alt="LaClasica"
+            class="product-img"
+          />
+        </div>
+        <div class="product-card" data-id="Dosx1PerroEspecial">
+          <div class="product-info">
+            <h3>2x1 Perro especial</h3>
+            <p>
+              Salchicha americana, cebolla caramelizada, queso, tocineta, ripio
+              de papas y salsa de la casa
+            </p>
+            <span class="price">$20.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/combos/2x1perroespecial.jpg"
+            alt="2x1PerroEspecial"
+            class="product-img"
+          />
+        </div>
+        <div class="product-card" data-id="Dosx1SuperPerro">
+          <div class="product-info">
+            <h3>2x1 Super perro</h3>
+            <p>
+              Salchicha sencilla, cebolla caramelizada, tocineta, ripio de papas
+              y salsa de la casa
+            </p>
+            <span class="price">$16.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/combos/2X1Superperro.png"
+            alt="Dosx1SuperPerro"
+            class="product-img"
+          />
+        </div>
+        <div class="product-card" data-id="Dosx1PerroSencillo">
+          <div class="product-info">
+            <h3>2x1 Perro sencillo</h3>
+            <p>
+              Salchicha sencilla, cebolla caramelizada, ripio de papas y salsa
+              de la casa
+            </p>
+            <span class="price">$15.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/combos/2x1PerroSencillo.jpg"
+            alt="Dosx1PerroSencillo"
+            class="product-img"
+          />
+        </div>
+        <div class="product-card" data-id="ComboDos">
+          <div class="product-info">
+            <h3>Super combo</h3>
+            <p>
+              Gaseosa econolitro <br />
+              2 Hamburguesas super <br />
+              Papas a la francesa
+            </p>
+            <span class="price">$30.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/combos/combo2.jpg"
+            alt="ComboDos"
+            class="product-img"
+          />
+        </div>
+        <div class="product-card" data-id="Combo3">
+          <div class="product-info">
+            <h3>Combo angus</h3>
+            <p>
+              Gaseosa personal <br />
+              Hamburguesas Angus <br />
+              Papas a la francesa
+            </p>
+            <span class="price">$24.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/Hamburguesas/Hamburguesa.jpg"
+            alt="Combo3"
+            class="product-img"
+          />
+        </div>
+        <div class="product-card" data-id="Combo1">
+          <div class="product-info">
+            <h3>Combo personal</h3>
+            <p>
+              Gaseosa personal <br />
+              Hamburguesas HambuSuper <br />
+              Papas a la francesa
+            </p>
+            <span class="price">$18.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/combos/combos1.jpg"
+            alt="Combo1"
+            class="product-img"
+          />
+        </div>
+      </div>
+    </section>
+    <section id="Perros">
+      <h2>Perros</h2>
+
+      <div class="products-grid">
+        <div class="product-card" data-id="PerroEspecial">
+          <div class="product-info">
+            <h3>Perro especial</h3>
+            <p>
+              Salchicha americana, cebolla caramelizada, queso, tocineta, ripio
+              de papas y salsa de la casa
+            </p>
+            <span class="price">$15.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/Perros/perroEspecial.png"
+            alt="PerroEspecial"
+            class="product-img"
+          />
+        </div>
+        <div class="product-card" data-id="SuperPerro">
+          <div class="product-info">
+            <h3>Super perro</h3>
+            <p>
+              Salchicha sencilla, cebolla caramelizada, tocineta, ripio de papas
+              y salsa de la casa
+            </p>
+            <span class="price">$14.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/Perros/SuperPerro.jpg"
+            alt="SuperPerro"
+            class="product-img"
+          />
+        </div>
+        <div class="product-card" data-id="PerroSencillo">
+          <div class="product-info">
+            <h3>Perro sencillo</h3>
+            <p>
+              Salchicha sencilla, cebolla caramelizada, ripio de papas y salsa
+              de la casa
+            </p>
+            <span class="price">$12.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/Perros/perrosencillo.png"
+            alt="PerroSencillo"
+            class="product-img"
+          />
+        </div>
+      </div>
+    </section>
+    <section id="Adicciones">
+      <h2>Adicciones</h2>
+      <div class="products-grid">
+        <div class="product-card" data-id="PapasFrancesa">
+          <div class="product-info">
+            <h3>Porcion de papas a la francesa</h3>
+            <p>Porcion de papas a la francesa</p>
+            <span class="price">$10.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/adiciones/papas fancesa.jpg"
+            alt="PapasFrancesa"
+            class="product-img"
+          />
+        </div>
+        <div class="product-card" data-id="PapasCriolla">
+          <div class="product-info">
+            <h3>Porcion de papas Criolla</h3>
+            <p>Porcion de papas amarilla</p>
+            <span class="price">$10.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/adiciones/papas criollas.jpg"
+            alt="PapasCriolla"
+            class="product-img"
+          />
+        </div>
+      </div>
+    </section>
+    <section id="Bebidas">
+      <h2>Bebidas</h2>
+      <div class="products-grid">
+        <div class="product-card" data-id="JugosNaturales">
+          <div class="product-info">
+            <h3>Jugos Frappé</h3>
+            <p>
+              En agua <br />
+              Mango, Moral, Lulo, Fresa y maracuya
+            </p>
+            <span class="price">$8.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/Bebidas/jugos-naturales.webp"
+            alt="JugosNaturales"
+            class="product-img"
+          />
+        </div>
+        <div class="product-card" data-id="JugosLeche">
+          <div class="product-info">
+            <h3>Jugos en leche</h3>
+            <p>Mango, Moral, Lulo, Fresa y maracuya</p>
+            <span class="price">$9.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/Bebidas/jugos-naturales.webp"
+            alt="Jugos en Leche"
+            class="product-img"
+          />
+        </div>
+        <div class="product-card" data-id="Limonadas">
+          <div class="product-info">
+            <h3>Limonadas</h3>
+            <p>natural, cerezada, fresa, coco, hierba buena</p>
+            <span class="price">Desde $7.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/Bebidas/Limonadas.webp"
+            alt="Limonadas"
+            class="product-img"
+          />
+        </div>
+        <div class="product-card" data-id="CocaPersonal">
+          <div class="product-info">
+            <h3>Coca Cola personal</h3>
+            <p>400ML</p>
+            <span class="price">$3.500</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/Bebidas/Cocacolapersonal.webp"
+            alt="CocaPersonal"
+            class="product-img"
+          />
+        </div>
+        <div class="product-card" data-id="QuatroPersonal">
+          <div class="product-info">
+            <h3>Quatro personal</h3>
+            <p>400ML</p>
+            <span class="price">$3.500</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/Bebidas/Quatro_1.webp"
+            alt="QuatroPersonal"
+            class="product-img"
+          />
+        </div>
+        <div class="product-card" data-id="CocaCola1L">
+          <div class="product-info">
+            <h3>Coca Cola 1 Litro</h3>
+            <p>1000ML</p>
+            <span class="price">$5.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/Bebidas/Cocacola1l.webp"
+            alt="CocaCola1L"
+            class="product-img"
+          />
+        </div>
+        <div class="product-card" data-id="CocaCola15L">
+          <div class="product-info">
+            <h3>Coca Cola 1.5 Litro</h3>
+            <p>1500ML</p>
+            <span class="price">$7.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/Bebidas/BEBIDA-GASEOSA-ORIGINAL-1554892_a.webp"
+            alt="CocaCola15L"
+            class="product-img"
+          />
+        </div>
+        <div class="product-card" data-id="Quatro15L">
+          <div class="product-info">
+            <h3>Quatro 1.5 Litro</h3>
+            <p>1500ML</p>
+            <span class="price">$7.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/Bebidas/quatro1.5_1.webp"
+            alt="Quatro15L  "
+            class="product-img"
+          />
+        </div>
+        <div class="product-card" data-id="EconolitroPostobon">
+          <div class="product-info">
+            <h3>Econolitro postobon</h3>
+            <p>1000ML</p>
+            <span class="price">$5.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/Bebidas/ECONOLITRO-POSTOBON.webp"
+            alt="EconolitroPostobon"
+            class="product-img"
+          />
+        </div>
+        <div class="product-card" data-id="HitPersonal">
+          <div class="product-info">
+            <h3>Jugo Hit personal</h3>
+            <p>500ML</p>
+            <span class="price">$3.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/Bebidas/hitpersonal.webp"
+            alt="HitPersonal"
+            class="product-img"
+          />
+        </div>
+        <div class="product-card" data-id="BotellaAgua">
+          <div class="product-info">
+            <h3>Botella de agua</h3>
+            <p>600ML</p>
+            <span class="price">$2.500</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/Bebidas/botella de agua.webp"
+            alt="BotellaAgua"
+            class="product-img"
+          />
+        </div>
+        <div class="product-card" data-id="Cerveza">
+          <div class="product-info">
+            <h3>Cerveza en lata</h3>
+            <p>330ML</p>
+            <span class="price">$4.000</span>
+
+            <button class="add-btn">Agregar</button>
+          </div>
+
+          <img
+            src="img/productos/Bebidas/cervezalata.webp"
+            alt="Cerveza"
+            class="product-img"
+          />
+        </div>
+      </div>
+    </section>
+    <!-- ================= MODAL PRODUCTO ================= -->
+    <div class="modal" id="productModal">
+      <div class="modal-content">
+        <div class="modal-layout">
+          <!-- COLUMNA IZQUIERDA -->
+          <div class="modal-left">
+            <img id="modalImage" class="modal-image" />
+
+            <div class="image-actions">
+              <button id="closeModal" class="small-btn cancel-btn">
+                Cancelar
+              </button>
+              <button id="confirmAdd" class="small-btn confirm-btn">
+                Agregar
+              </button>
+            </div>
+          </div>
+
+          <!-- COLUMNA DERECHA -->
+          <div class="modal-right">
+            <h2 id="modalTitle"></h2>
+
+            <div class="extras">
+              <h4>Adiciones</h4>
+              <div id="extrasContainer"></div>
+            </div>
+
+            <div class="notes">
+              <h4>Observaciones</h4>
+              <textarea
+                id="productNotes"
+                placeholder="ej:Sin cebolla y mas salsa verde"
+              ></textarea>
+            </div>
+
+            <div class="quantity">
+              <button id="minusQty">-</button>
+              <span id="productQty">1</span>
+              <button id="plusQty">+</button>
+            </div>
+
+            <h3 class="modal-total">Total: $<span id="modalTotal">0</span></h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ================= CARRITO ================= -->
+    <div class="cart-icon" id="cartIcon">🛒 <span id="cartCount">0</span></div>
+
+    <div class="cart-panel" id="cartPanel">
+      <h3>Tu Pedido</h3>
+
+      <div id="cartItems"></div>
+
+      <h4>Total: $<span id="cartTotal">0</span></h4>
+
+      <hr />
+
+      <h3>Datos del Cliente</h3>
+
+      <input type="text" id="clientName" placeholder="Nombre" />
+      <input type="text" id="clientLastName" placeholder="Apellido" />
+      <input
+        type="tel"
+        maxlength="10"
+        id="clientPhone"
+        placeholder="Teléfono"
+      />
+      <input type="email" id="clientEmail" placeholder="Correo electrónico" />
+      <input type="text" id="clientAddress" placeholder="Dirección" />
+      <div class="form-group">
+        <label for="barrio">Barrio</label>
+        <select id="barrio" required>
+          <option value="">Selecciona tu barrio</option>
+          <option value="Los alcazares">Los alcazares</option>
+          <option value="Fonaviemcali">Fonaviemcali</option>
+          <option value="San luis 2">San luis 2</option>
+          <option value="San luis 2 - Ciudad de cali">
+            San luis 2 - Ciudad de cali
+          </option>
+          <option value="Sa Luis 1">San Luis 1</option>
+          <option value="Metropolitano del norte">
+            Metropolitano del norte
+          </option>
+          <option value="Villa del sol">Villa del sol</option>
+          <option value="Plazas verde">Plazas verde</option>
+          <option value="Paso del comercio">Paso del comercio</option>
+          <option value="Oasis de comfandi">Oasis de comfandi</option>
+          <option value="Comfenalco">Comfenalco</option>
+          <option value="Guaduales">Guaduales</option>
+          <option value="Calimio">Calimio norte</option>
+          <option value="Flora industrial">Flora industrial</option>
+          <option value="Floralia">Floralia</option>
+          <option value="Chiminangos">Chiminangos</option>
+          <option value="La rivera">La rivera</option>
+          <option value="Torres de comfandi">Torres de comfandi</option>
+          <option value="Los andes">Los andes</option>
+          <option value="Los alamos">Los alamos</option>
+          <option value="Guayacanes">Guayacanes</option>
+          <option value="Brisa de los alamos">Brisa de los alamos</option>
+          <option value="Barranquilla">Barranquilla</option>
+          <option value="Brisas del guavito">Brisas del guavito</option>
+          <option value="Tejares de salomia">Tejares de salomia</option>
+          <option value="Quintas de salomia">Quintas de salomia</option>
+          <option value="Petecuy">Petecuy</option>
+          <option value="Salomia">Salomia</option>
+          <option value="El saman">El saman</option>
+          <option value="La mercerd">La merced</option>
+          <option value="Los almendros">Los almendros</option>
+          <option value="Villa de veracruz">Villa de veracruz</option>
+          <option value="La flora">La flora</option>
+          <option value="Vipasa">Vipasa</option>
+          <option value="prados del norte">prados del norte</option>
+          <option value="Villa del prado">Villa del prado</option>
+          <option value="Santa barbara">Santa barbara</option>
+          <option value="La dolores">La dolores</option>
+          <option value="Cauca seco">Cauca seco</option>
+          <option value="Cali bella">Cali bella</option>
+          <option value="Alfonso lopez">Alfonso lopez</option>
+          <option value="Versalles">Versalles</option>
+          <option value="Menga">Menga</option>
+          <option value="Altos de menga">Altos de menga</option>
+        </select>
+
+        <label for="paymentMethod">Medio de pago</label>
+        <select id="paymentMethodFinal">
+          <option value="">Selecciona método</option>
+          <option value="Efectivo">Efectivo</option>
+          <option value="Transferencia">Transferencia</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <p>Domicilio: $<span id="costo-domicilio">0</span></p>
+      </div>
+
+      <label style="margin-top: 8px; display: block">
+        <input type="checkbox" id="needInvoice" />
+        Necesito facturación electrónica
+      </label>
+
+      <textarea
+        id="invoiceDetails"
+        placeholder="Si es a nombre propio, especifica tipo y numero de documento"
+        style="display: none"
+      ></textarea>
+
+      <label class="privacy-check">
+        <input type="checkbox" id="acceptPrivacy" required />
+          Acepto la <a href="HTML/politica.html" target="_blank">Política de Privacidad</a> 
+           y el Tratamiento de Datos Personales.
+        </label>
+      <button id="sendWhatsApp">Enviar pedido</button>
+    </div>
+    <img src="img/MENSAJERO.png" id="runner" class="runner" />
+    <script src="js/modal.js"></script>
+    <script>
+      const sections = document.querySelectorAll("section");
+const navItems = document.querySelectorAll(".categories li");
+
+window.addEventListener("scroll", () => {
+  let current = "";
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 150;
+    const sectionHeight = section.offsetHeight;
+
+    if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+      current = section.getAttribute("id");
+    }
+  });
+
+  navItems.forEach(li => {
+    li.classList.remove("active");
+
+    const parentLink = li.closest("a");
+    if (parentLink && parentLink.getAttribute("href") === `#${current}`) {
+      li.classList.add("active");
+    }
+  });
+});
+    </script>
+    <script>
+      const categoriesBar = document.querySelector(".categories-bar");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 150) {
+    categoriesBar.classList.add("sticky-active");
+  } else {
+    categoriesBar.classList.remove("sticky-active");
+  }
+});
+    </script>
+    <script>
+      const categories = document.querySelectorAll(".categories li");
+const categoriesContainer = document.querySelector(".categories-bar");
+
+categories.forEach(category => {
+  category.addEventListener("click", () => {
+
+    // Quitar active anterior
+    document.querySelector(".categories li.active")?.classList.remove("active");
+
+    // Activar el actual
+    category.classList.add("active");
+
+    // Centrarse suavemente
+    const containerWidth = categoriesContainer.offsetWidth;
+    const categoryWidth = category.offsetWidth;
+    const categoryLeft = category.offsetLeft;
+
+    const scrollTo =
+      categoryLeft - (containerWidth / 2) + (categoryWidth / 2);
+
+    categoriesContainer.scrollTo({
+      left: scrollTo,
+      behavior: "smooth"
+    });
+
+  });
+});
+    </script>
+    <script>
+      // Mostrar solo la primera vez
+document.addEventListener("DOMContentLoaded", function () {
+  const modal = document.getElementById("welcomeModal");
+  const closeBtn = document.getElementById("closeWelcome");
+
+  if (!localStorage.getItem("welcomeShown")) {
+    modal.style.display = "flex";
+  } else {
+    modal.style.display = "none";
+  }
+
+  closeBtn.addEventListener("click", function () {
+    modal.style.display = "none";
+    localStorage.setItem("welcomeShown", "true");
+  });
+});
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <footer class="main-footer">
+      <div class="footer-container">
+        <div class="footer-brand">
+          <h3>Chichos Asados y Comidas Rapidas</h3>
+           <div class="footer-social">
+            <a href="https://www.instagram.com/chichos_asadosycomidas_rapidas/" target="_blank">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.facebook.com/share/1BG8khexFz/?mibextid=wwXIfr" target="_blank">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://wa.me/573187217532" target="_blank">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="https://www.tiktok.com/@chichos_comidasrapidas?_r=1&_t=ZS-94HUrGRdaqr" target="_blank">
+              <i class="fa-brands fa-tiktok"></i>
+            </a>
+          </div>
+          <p>Menú digital interactivo</p>
+        </div>
+
+        <div class="footer-dev">
+          <p>
+            Diseñado y desarrollado por
+            <a href="https://dannybytedev.github.io/PortfolioDannyByte/" target="_blank"> Danny Byte </a>
+          </p>
+          <p class="footer-cta">
+            ¿Quieres un menú digital como este?
+            <a href="https://dannybytedev.github.io/PortfolioDannyByte/" target="_blank">
+              Haz clic aquí
+            </a>
+          </p>
+        </div>
+
+        <div class="footer-copy">
+          <p>© 2026</span> Todos los derechos reservados</p>
+        </div>
+      </div>
+    </footer>
+<div id="welcomeModal" class="welcome-overlay">
+  <div class="welcome-box">
+    <img src="img/Mascota.png" alt="Mascota Chicho's" class="welcome-mascot" />
+
+    <h2>¡Bienvenido a Chicho’s Asados y comidas rapidas! 🔥</h2>
+
+    <p>
+      Gracias por preferirnos 💛  
+      Ahora puedes hacer tu pedido de manera rápida y sencilla desde nuestro menú digital.
+    </p>
+
+    <p class="small-text">
+      Selecciona tus productos favoritos, completa tus datos y recibe tu pedido en casa.
+    </p>
+
+    <button id="closeWelcome">Comenzar pedido</button>
+  </div>
+</div>
+  </body>
+</html>
