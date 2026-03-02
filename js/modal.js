@@ -1094,13 +1094,11 @@ document.getElementById("sendWhatsApp").addEventListener("click", function () {
 
   const url = `https://wa.me/${businessPhone}?text=${encodeURIComponent(message)}`;
 
-  // Activar animación
-  animarRepartidor();
+// Primero abrir WhatsApp (acción directa del click)
+  window.location.href = url;
 
-  // Pequeño delay para que se vea arrancar el personaje
-  setTimeout(() => {
-    window.open(url, "_blank");
-  }, 1000);
+  // Luego animación ligera (pero sin delay antes del redirect)
+  animarRepartidor();
 
   // Recargar después de que termine la animación
   setTimeout(() => {
