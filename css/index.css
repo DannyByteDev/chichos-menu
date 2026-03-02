@@ -16,7 +16,6 @@ html {
   position: relative;
   z-index: 100;
   border-bottom: 1px solid #f0f0f0;
-
 }
 
 /* =========================
@@ -722,36 +721,36 @@ textarea:focus {
     font-size: 12px;
   }
   .categories-bar {
-  width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
-  white-space: nowrap;
-  -webkit-overflow-scrolling: touch;
-}
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
 
-.categories {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 10px;
-  padding: 10px 14px;
-  min-width: max-content;
-}
+  .categories {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    padding: 10px 14px;
+    min-width: max-content;
+  }
 
-.categories li {
-  flex: 0 0 auto;
-  padding: 8px 14px;
-  border-radius: 20px;
-  font-size: 13px;
-  white-space: nowrap;
-}
+  .categories li {
+    flex: 0 0 auto;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
 
-/* Ocultar scrollbar visual */
-.categories-bar::-webkit-scrollbar {
-  display: none;
-}
-.categories-bar {
-  scrollbar-width: none;
-}
+  /* Ocultar scrollbar visual */
+  .categories-bar::-webkit-scrollbar {
+    display: none;
+  }
+  .categories-bar {
+    scrollbar-width: none;
+  }
 }
 
 @media (max-width: 320px) {
@@ -796,41 +795,45 @@ textarea:focus {
     height: 50px;
   }
   /* ============================= */
-/* NAVBAR RESPONSIVE MOBILE */
-/* ============================= */
+  /* NAVBAR RESPONSIVE MOBILE */
+  /* ============================= */
 
-.categories-bar {
-  width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
-  white-space: nowrap;
-  -webkit-overflow-scrolling: touch;
-}
+  .categories-bar {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
 
-.categories {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 10px;
-  padding: 10px 14px;
-  min-width: max-content;
-}
+  .categories {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    padding: 10px 14px;
+    min-width: max-content;
+  }
 
-.categories li {
-  flex: 0 0 auto;
-  padding: 8px 14px;
-  border-radius: 20px;
-  font-size: 13px;
-  white-space: nowrap;
-}
+  .categories li {
+    flex: 0 0 auto;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
 
-/* Ocultar scrollbar visual */
-.categories-bar::-webkit-scrollbar {
-  display: none;
+  /* Ocultar scrollbar visual */
+  .categories-bar::-webkit-scrollbar {
+    display: none;
+  }
+  .categories-bar {
+    scrollbar-width: none;
+  }
 }
-.categories-bar {
-  scrollbar-width: none;
-}
-
+@media (max-width: 480px) {
+  .privacy-check {
+    font-size: 13px;
+  }
 }
 /* ---------- MÓVILES PEQUEÑOS ---------- */
 @media (max-width: 480px) {
@@ -875,40 +878,40 @@ textarea:focus {
     height: 50px;
   }
   /* ============================= */
-/* NAVBAR RESPONSIVE MOBILE */
-/* ============================= */
+  /* NAVBAR RESPONSIVE MOBILE */
+  /* ============================= */
 
-.categories-bar {
-  width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
-  white-space: nowrap;
-  -webkit-overflow-scrolling: touch;
-}
+  .categories-bar {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
 
-.categories {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 10px;
-  padding: 10px 14px;
-  min-width: max-content;
-}
+  .categories {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    padding: 10px 14px;
+    min-width: max-content;
+  }
 
-.categories li {
-  flex: 0 0 auto;
-  padding: 8px 14px;
-  border-radius: 20px;
-  font-size: 13px;
-  white-space: nowrap;
-}
+  .categories li {
+    flex: 0 0 auto;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
 
-/* Ocultar scrollbar visual */
-.categories-bar::-webkit-scrollbar {
-  display: none;
-}
-.categories-bar {
-  scrollbar-width: none;
-}
+  /* Ocultar scrollbar visual */
+  .categories-bar::-webkit-scrollbar {
+    display: none;
+  }
+  .categories-bar {
+    scrollbar-width: none;
+  }
 }
 
 /* ===================================== */
@@ -949,38 +952,38 @@ textarea:focus {
     margin-top: 10px;
   }
   /* ============================= */
-/* NAVBAR RESPONSIVE MOBILE */
-/* ============================= */
+  /* NAVBAR RESPONSIVE MOBILE */
+  /* ============================= */
 
-.categories-bar {
-  width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
-  white-space: nowrap;
-  -webkit-overflow-scrolling: touch;
-}
+  .categories-bar {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
 
-.categories {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 10px;
-  padding: 10px 14px;
-  min-width: max-content;
-}
+  .categories {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    padding: 10px 14px;
+    min-width: max-content;
+  }
 
-.categories li {
-  flex: 0 0 auto;
-  padding: 8px 14px;
-  border-radius: 20px;
-  font-size: 13px;
-  white-space: nowrap;
-}
+  .categories li {
+    flex: 0 0 auto;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
 
-/* Ocultar scrollbar visual */
-.categories-bar::-webkit-scrollbar {
-  display: none;
-}
-.categories-bar {
-  scrollbar-width: none;
-}
+  /* Ocultar scrollbar visual */
+  .categories-bar::-webkit-scrollbar {
+    display: none;
+  }
+  .categories-bar {
+    scrollbar-width: none;
+  }
 }
