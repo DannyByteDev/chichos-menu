@@ -338,22 +338,8 @@ textarea:focus {
   gap: 12px;
   margin: 18px 0;
 }
-.privacy-check {
-  font-size: 13px;
-  margin-top: 12px;
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  line-height: 1.4;
-}
 
-.privacy-check input {
-  margin-top: 3px;
-  transform: scale(1.1);
-  cursor: pointer;
-}
-
-#invoiceDetails a {
+.invoiceDetailsA {
   color: #ff6600;
   text-decoration: none;
   font-weight: 600;
