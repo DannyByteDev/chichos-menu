@@ -353,7 +353,7 @@ textarea:focus {
   cursor: pointer;
 }
 
-.privacy-check a {
+#invoiceDetails a {
   color: #ff6600;
   text-decoration: none;
   font-weight: 600;
