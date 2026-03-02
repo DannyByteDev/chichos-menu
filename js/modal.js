@@ -578,7 +578,7 @@ const productsData = {
 const CONFIG = {
   timezone: "America/Bogota",
   diasPermitidos: [0, 1, 3, 4, 5, 6], // Dom, Lun, Mié, Jue, Vie, Sáb
-  horaApertura: 17, // 5:00 PM
+  horaApertura: 12, // 5:00 PM
   minutoApertura: 0,
   horaCierre: 23,
   minutoCierre: 30,
