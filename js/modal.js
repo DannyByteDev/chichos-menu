@@ -908,14 +908,30 @@ document.getElementById("confirmAdd").onclick = () => {
 
     saborElegido = saborActivo.dataset.name;
   }
+
+  function calcularTotalNumerico() {
+    let extrasTotal = 0;
+
+    document.querySelectorAll(".extra-data").forEach((input) => {
+      const qty = parseInt(input.value);
+      const price = parseInt(input.dataset.price);
+      extrasTotal += qty * price;
+    });
+
+    const ajusteSabor = currentProduct.precioSabor || 0;
+
+    return (currentProduct.price + ajusteSabor + extrasTotal) * quantity;
+  }
+
+  const totalNumerico = calcularTotalNumerico();
+
   cart.push({
     name: currentProduct.name + (saborElegido ? ` (${saborElegido})` : ""),
     quantity,
     extras: extrasList,
     notes,
-    price: parseInt(modalTotal.textContent.replace(/\./g, "")),
+    price: totalNumerico,
   });
-
   updateCartUI();
   closeModal();
 };
