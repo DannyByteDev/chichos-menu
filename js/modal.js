@@ -330,6 +330,10 @@ const productsData = {
       { name: "Botella de agua", price: 2500 },
     ],
   },
+  CostillaBBQ: {
+    name: "Costilla BBQ",
+    price: 20000,
+  },
   LaDoble: {
     name: "2x1 Doble",
     price: 26000,
