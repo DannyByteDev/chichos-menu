@@ -1,1371 +1,1711 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chichos asados y comidas rapidas</title>
-    <link rel="stylesheet" href="css/index.css" />
-    <link rel="icon" type="ico" href="img/logo.ico" />
-    <link rel="stylesheet" href="css/animacion.css" />
-    <link rel="stylesheet" href="css/footer.css" />
-    <link rel="stylesheet" href="css/Mascota.css">
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/animacionNavbar.css">
-  </head>
-  <body>
-    <header class="navbar">
-      <div class="navbar-top">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chicho's Asados y Comidas Rapidas</title>
+    <link rel="icon" type="image/x-icon" href="img/logo.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--primary:#D4231A;--primary-dark:#A31A13;--primary-light:#FF4438;--accent:#F5A623;--accent-light:#FFD166;--dark:#1A1A1A;--dark-brown:#2C1810;--warm-black:#1C1110;--warm-gray:#3D2E2A;--card-bg:#1E1412;--card-bg-hover:#2A1D19;--text-light:#F5F0EB;--text-muted:#B8A99A;--text-dim:#8A7B6E;--gold:#D4A853;--gold-light:#E8C97A;--fire-orange:#FF6B35;--ember:#C44536;--success:#4CAF50;--border-subtle:rgba(212,168,83,0.15);--shadow-sm:0 2px 8px rgba(0,0,0,0.3);--shadow-md:0 4px 20px rgba(0,0,0,0.4);--shadow-lg:0 8px 40px rgba(0,0,0,0.5);--radius-sm:8px;--radius-md:12px;--radius-lg:16px;--radius-xl:24px;--transition:all 0.3s cubic-bezier(0.4,0,0.2,1)}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;background:var(--warm-black);color:var(--text-light);overflow-x:hidden;line-height:1.6}
+::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:var(--dark-brown)}::-webkit-scrollbar-thumb{background:var(--primary);border-radius:4px}
+
+/* NAVBAR */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(28,17,16,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);transition:var(--transition)}
+.navbar.scrolled{background:rgba(28,17,16,0.95);box-shadow:0 4px 30px rgba(0,0,0,0.5)}
+.navbar-inner{max-width:1400px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-logo{width:50px;height:50px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);box-shadow:0 0 15px rgba(212,168,83,0.3)}
+.brand-text h1{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:800;color:var(--gold);letter-spacing:1px;line-height:1.2}
+.brand-text p{font-size:0.75rem;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase}
+.navbar-status{display:flex;align-items:center;gap:16px}
+.nav-info{display:flex;align-items:center;gap:16px;font-size:0.8rem;color:var(--text-muted)}
+.nav-info span{display:flex;align-items:center;gap:6px}
+.nav-info i{color:var(--primary)}
+#estadoNegocio{font-size:0.8rem;font-weight:600;padding:6px 14px;border-radius:50px}
+#estadoNegocio.abierto{background:rgba(76,175,80,0.15);border:1px solid rgba(76,175,80,0.3);color:#81C784}
+#estadoNegocio.cerrado{background:rgba(244,67,54,0.15);border:1px solid rgba(244,67,54,0.3);color:#EF5350}
+#contadorApertura{font-size:0.75rem;color:var(--text-dim)}
+.cart-toggle{position:relative;background:var(--primary);color:white;border:none;width:44px;height:44px;border-radius:50%;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:var(--transition);box-shadow:0 4px 15px rgba(212,35,26,0.4)}
+.cart-toggle:hover{background:var(--primary-light);transform:scale(1.1)}
+#cartCount{position:absolute;top:-4px;right:-4px;background:var(--accent);color:var(--dark);font-size:0.7rem;font-weight:700;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+
+/* HERO */
+.hero{position:relative;height:85vh;min-height:550px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('hero-bg.png') center/cover no-repeat;filter:brightness(0.4);transform:scale(1.05);animation:hero-zoom 20s ease-in-out infinite alternate}
+@keyframes hero-zoom{0%{transform:scale(1.05)}100%{transform:scale(1.15)}}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(28,17,16,0.7) 0%,rgba(28,17,16,0.3) 40%,rgba(28,17,16,0.5) 70%,rgba(28,17,16,1) 100%)}
+.hero-content{position:relative;z-index:2;text-align:center;padding:0 24px;max-width:800px;animation:fadeInUp 1s ease-out}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;background:rgba(212,35,26,0.2);border:1px solid rgba(212,35,26,0.4);border-radius:50px;font-size:0.85rem;font-weight:600;color:var(--primary-light);margin-bottom:24px;letter-spacing:1px;text-transform:uppercase}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,6vw,4.5rem);font-weight:900;line-height:1.1;margin-bottom:16px}
+.hero-title .highlight{color:var(--gold);position:relative}
+.hero-title .highlight::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--primary),var(--accent));border-radius:2px}
+.hero-subtitle{font-size:1.15rem;color:var(--text-muted);margin-bottom:32px;font-weight:300;line-height:1.7}
+.hero-cta{display:inline-flex;align-items:center;gap:10px;padding:14px 36px;background:linear-gradient(135deg,var(--primary),var(--fire-orange));color:white;text-decoration:none;border-radius:50px;font-weight:600;font-size:1rem;transition:var(--transition);box-shadow:0 8px 30px rgba(212,35,26,0.4);border:none;cursor:pointer}
+.hero-cta:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(212,35,26,0.6)}
+.hero-stats{display:flex;justify-content:center;gap:40px;margin-top:48px;padding-top:32px;border-top:1px solid rgba(255,255,255,0.1)}
+.hero-stat{text-align:center}
+.hero-stat-number{font-family:'Playfair Display',serif;font-size:2rem;font-weight:800;color:var(--gold)}
+.hero-stat-label{font-size:0.8rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px}
+
+/* CATEGORIES BAR */
+.categories-bar{position:sticky;top:78px;z-index:900;background:rgba(28,17,16,0.95);backdrop-filter:blur(15px);border-bottom:1px solid var(--border-subtle);transition:var(--transition)}
+.categories{display:flex;list-style:none;overflow-x:auto;gap:4px;padding:10px 24px;max-width:1400px;margin:0 auto;scrollbar-width:none}
+.categories::-webkit-scrollbar{display:none}
+.categories a{text-decoration:none}
+.categories li{padding:10px 22px;white-space:nowrap;border-radius:50px;font-size:0.85rem;font-weight:500;color:var(--text-muted);cursor:pointer;transition:var(--transition);border:1px solid transparent}
+.categories li:hover{color:var(--text-light);background:rgba(255,255,255,0.05)}
+.categories li.active{color:white;background:linear-gradient(135deg,var(--primary),var(--ember));box-shadow:0 4px 15px rgba(212,35,26,0.3);font-weight:600}
+
+/* MENU SECTIONS */
+.menu-container{max-width:1400px;margin:0 auto;padding:0 24px}
+.menu-section{padding:60px 0 40px}
+.section-header{display:flex;align-items:center;gap:16px;margin-bottom:36px}
+.section-icon{width:48px;height:48px;border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.section-icon.salchipapas{background:rgba(255,107,53,0.15);color:#FF6B35}
+.section-icon.hamburguesas{background:rgba(212,168,83,0.15);color:#D4A853}
+.section-icon.asados{background:rgba(196,69,54,0.15);color:#C44536}
+.section-icon.combos{background:rgba(76,175,80,0.15);color:#66BB6A}
+.section-icon.perros{background:rgba(255,209,102,0.15);color:#FFD166}
+.section-icon.adiciones{background:rgba(139,195,74,0.15);color:#9CCC65}
+.section-icon.bebidas{background:rgba(33,150,243,0.15);color:#42A5F5}
+.section-title{font-family:'Playfair Display',serif;font-size:2rem;font-weight:800;color:var(--text-light)}
+.section-line{flex:1;height:1px;background:linear-gradient(90deg,var(--border-subtle),transparent)}
+
+/* PRODUCT CARDS */
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px}
+.product-card{background:var(--card-bg);border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border-subtle);transition:var(--transition);display:flex;flex-direction:column;opacity:0;transform:translateY(30px)}
+.product-card.visible{opacity:1;transform:translateY(0)}
+.product-card:hover{transform:translateY(-6px);border-color:rgba(212,168,83,0.3);box-shadow:var(--shadow-lg)}
+.product-card-img{position:relative;height:200px;overflow:hidden}
+.product-card-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease}
+.product-card:hover .product-card-img img{transform:scale(1.08)}
+.product-card-img::after{content:'';position:absolute;bottom:0;left:0;right:0;height:60%;background:linear-gradient(transparent,var(--card-bg));pointer-events:none}
+.price-tag{position:absolute;top:12px;right:12px;background:rgba(28,17,16,0.9);backdrop-filter:blur(10px);padding:6px 14px;border-radius:50px;font-weight:700;font-size:0.95rem;color:var(--gold);border:1px solid rgba(212,168,83,0.3);z-index:2}
+.product-card-body{padding:20px;flex:1;display:flex;flex-direction:column}
+.product-name{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:var(--text-light);margin-bottom:8px}
+.product-desc{font-size:0.85rem;color:var(--text-dim);line-height:1.6;margin-bottom:16px;flex:1}
+.product-footer{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.product-price{font-size:1.35rem;font-weight:800;color:var(--gold)}
+.add-btn{display:flex;align-items:center;gap:8px;padding:10px 22px;background:linear-gradient(135deg,var(--primary),var(--ember));color:white;border:none;border-radius:50px;font-family:'Poppins',sans-serif;font-size:0.85rem;font-weight:600;cursor:pointer;transition:var(--transition);box-shadow:0 4px 15px rgba(212,35,26,0.3)}
+.add-btn:hover{background:linear-gradient(135deg,var(--primary-light),var(--primary));transform:translateY(-2px);box-shadow:0 6px 20px rgba(212,35,26,0.5)}
+
+/* PRODUCT MODAL */
+.product-modal{position:fixed;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.7);backdrop-filter:blur(10px);opacity:0;pointer-events:none;transition:opacity 0.3s}
+.product-modal.active{opacity:1;pointer-events:auto}
+.product-modal-content{background:var(--dark-brown);border:1px solid var(--border-subtle);border-radius:var(--radius-xl);max-width:480px;width:92%;max-height:90vh;overflow-y:auto;transform:translateY(30px);transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1)}
+.product-modal.active .product-modal-content{transform:translateY(0)}
+.modal-img-section{position:relative;height:220px;overflow:hidden;border-radius:var(--radius-xl) var(--radius-xl) 0 0}
+.modal-img-section img{width:100%;height:100%;object-fit:cover}
+.modal-img-section::after{content:'';position:absolute;bottom:0;left:0;right:0;height:50%;background:linear-gradient(transparent,var(--dark-brown))}
+.modal-close-btn{position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,0.5);color:white;border:none;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2;transition:var(--transition)}
+.modal-close-btn:hover{background:var(--primary)}
+.modal-body{padding:20px 24px 24px}
+.modal-body h2{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--gold);margin-bottom:16px}
+.extra-item{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.05);gap:8px}
+.extra-info{flex:1;display:flex;justify-content:space-between;gap:8px;font-size:0.85rem}
+.extra-info span:first-child{color:var(--text-light)}
+.extra-info span:last-child{color:var(--gold);font-weight:600;white-space:nowrap}
+.extra-qty-controls{display:flex;align-items:center;gap:6px}
+.extra-qty-controls button{width:28px;height:28px;border-radius:50%;border:1px solid var(--border-subtle);background:rgba(255,255,255,0.05);color:var(--text-light);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:0.85rem;transition:var(--transition)}
+.extra-qty-controls button:hover{background:var(--primary);border-color:var(--primary)}
+.extra-qty{font-weight:600;min-width:18px;text-align:center;transition:transform 0.2s}
+.extra-qty.qty-bounce{transform:scale(1.3)}
+.sabores-container{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.sabor-btn{padding:8px 16px;border-radius:50px;border:1px solid var(--border-subtle);background:rgba(255,255,255,0.05);color:var(--text-light);font-family:'Poppins',sans-serif;font-size:0.82rem;cursor:pointer;transition:var(--transition)}
+.sabor-btn:hover{border-color:var(--gold);color:var(--gold)}
+.sabor-btn.active{background:linear-gradient(135deg,var(--primary),var(--ember));border-color:transparent;color:white;font-weight:600}
+.modal-qty-section{display:flex;align-items:center;justify-content:center;gap:20px;margin:16px 0;padding:12px 0;border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle)}
+.modal-qty-section button{width:36px;height:36px;border-radius:50%;border:1px solid var(--border-subtle);background:rgba(255,255,255,0.05);color:var(--text-light);cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:var(--transition)}
+.modal-qty-section button:hover{background:var(--primary);border-color:var(--primary);color:white}
+#productQty{font-size:1.3rem;font-weight:700;min-width:30px;text-align:center}
+.product-notes{width:100%;padding:10px 14px;background:rgba(255,255,255,0.05);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);color:var(--text-light);font-family:'Poppins',sans-serif;font-size:0.85rem;resize:none;height:60px;margin-top:12px}
+.product-notes::placeholder{color:var(--text-dim)}
+.product-notes:focus{outline:none;border-color:var(--primary)}
+.modal-total-section{display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:12px;border-top:1px solid var(--border-subtle)}
+.modal-total-label{font-size:1rem;font-weight:600;color:var(--text-muted)}
+.modal-total-value{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:800;color:var(--gold)}
+.modal-confirm-btn{width:100%;padding:14px;margin-top:16px;background:linear-gradient(135deg,var(--primary),var(--ember));color:white;border:none;border-radius:var(--radius-md);font-family:'Poppins',sans-serif;font-size:1rem;font-weight:600;cursor:pointer;transition:var(--transition)}
+.modal-confirm-btn:hover{background:linear-gradient(135deg,var(--primary-light),var(--primary));box-shadow:0 6px 20px rgba(212,35,26,0.4)}
+
+/* CART SIDEBAR */
+.cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:1998;opacity:0;pointer-events:none;transition:opacity 0.3s}
+.cart-overlay.active{opacity:1;pointer-events:auto}
+.cart-sidebar{position:fixed;top:0;right:-440px;width:420px;max-width:100vw;height:100vh;background:var(--dark-brown);z-index:1999;transition:right 0.4s cubic-bezier(0.4,0,0.2,1);display:flex;flex-direction:column;border-left:1px solid var(--border-subtle);box-shadow:-10px 0 40px rgba(0,0,0,0.5)}
+.cart-sidebar.active{right:0}
+.cart-header{padding:20px 24px;border-bottom:1px solid var(--border-subtle);display:flex;align-items:center;justify-content:space-between}
+.cart-header h3{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gold)}
+.cart-close{background:none;border:none;color:var(--text-muted);font-size:1.3rem;cursor:pointer;padding:8px;border-radius:50%;transition:var(--transition)}
+.cart-close:hover{background:rgba(255,255,255,0.05);color:var(--text-light)}
+.cart-items{flex:1;overflow-y:auto;padding:16px 24px}
+.cart-item{padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.05)}
+.cart-item strong{color:var(--text-light);font-size:0.9rem}
+.cart-item .cart-extras{color:var(--text-dim);font-size:0.8rem;margin-top:4px}
+.cart-item .cart-price{color:var(--gold);font-weight:600;font-size:0.9rem;margin-top:4px}
+.cart-item .cart-delete{background:var(--primary);color:white;border:none;padding:4px 10px;border-radius:6px;margin-top:6px;cursor:pointer;font-size:0.78rem;font-family:'Poppins',sans-serif;transition:var(--transition)}
+.cart-item .cart-delete:hover{background:var(--primary-light)}
+.cart-empty{text-align:center;padding:40px 20px;color:var(--text-dim)}
+.cart-empty i{font-size:3rem;margin-bottom:16px;display:block}
+.cart-form{padding:16px 24px;border-top:1px solid var(--border-subtle);max-height:45vh;overflow-y:auto}
+.cart-form h4{font-size:0.95rem;color:var(--gold);margin-bottom:12px;font-weight:600}
+.form-group{margin-bottom:10px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:9px 14px;background:rgba(255,255,255,0.05);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);color:var(--text-light);font-family:'Poppins',sans-serif;font-size:0.82rem;transition:var(--transition)}
+.form-group input::placeholder,.form-group textarea::placeholder{color:var(--text-dim)}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(212,35,26,0.15)}
+.form-group select option{background:var(--dark-brown);color:var(--text-light)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.checkbox-group{display:flex;align-items:center;gap:8px;margin:8px 0;font-size:0.82rem;color:var(--text-muted)}
+.checkbox-group input[type="checkbox"]{accent-color:var(--primary)}
+.domicilio-line{display:flex;justify-content:space-between;padding:8px 0;font-size:0.85rem;color:var(--text-muted);border-top:1px solid var(--border-subtle);margin-top:8px}
+.domicilio-line .domicilio-cost{color:var(--gold);font-weight:600}
+.cart-total{padding:14px 24px;border-top:1px solid var(--border-subtle);display:flex;justify-content:space-between;align-items:center}
+.cart-total span:first-child{font-size:1rem;font-weight:600;color:var(--text-muted)}
+.cart-total span:last-child{font-size:1.5rem;font-weight:800;color:var(--gold);font-family:'Playfair Display',serif}
+#sendWhatsApp{margin:0 24px 24px;padding:14px;background:linear-gradient(135deg,#25D366,#128C7E);color:white;border:none;border-radius:var(--radius-md);font-family:'Poppins',sans-serif;font-size:1rem;font-weight:600;cursor:pointer;transition:var(--transition);width:calc(100% - 48px);display:flex;align-items:center;justify-content:center;gap:8px}
+#sendWhatsApp:hover{box-shadow:0 6px 20px rgba(37,211,102,0.4);transform:translateY(-1px)}
+#sendWhatsApp:disabled{opacity:0.5;cursor:not-allowed;transform:none}
+
+/* WELCOME MODAL */
+.welcome-modal{position:fixed;inset:0;z-index:2001;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.7);backdrop-filter:blur(10px);opacity:0;pointer-events:none;transition:opacity 0.4s}
+.welcome-modal.active{opacity:1;pointer-events:auto}
+.welcome-content{background:var(--dark-brown);border:1px solid var(--border-subtle);border-radius:var(--radius-xl);padding:48px 40px;text-align:center;max-width:460px;width:90%;transform:scale(0.9);transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1)}
+.welcome-modal.active .welcome-content{transform:scale(1)}
+.welcome-icon{font-size:3.5rem;margin-bottom:16px}
+.welcome-content h2{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--gold);margin-bottom:12px}
+.welcome-content p{color:var(--text-muted);font-size:0.95rem;line-height:1.7;margin-bottom:28px}
+.welcome-btn{padding:12px 32px;background:linear-gradient(135deg,var(--primary),var(--fire-orange));color:white;border:none;border-radius:50px;font-family:'Poppins',sans-serif;font-size:1rem;font-weight:600;cursor:pointer;transition:var(--transition);box-shadow:0 6px 20px rgba(212,35,26,0.4)}
+.welcome-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(212,35,26,0.5)}
+
+/* FOOTER */
+footer{background:var(--dark-brown);border-top:1px solid var(--border-subtle);padding:48px 24px 24px;margin-top:40px}
+.footer-inner{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px}
+.footer-brand h3{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--gold);margin-bottom:12px}
+.footer-brand p{color:var(--text-dim);font-size:0.9rem;line-height:1.7}
+.footer-col h4{color:var(--text-light);font-size:1rem;font-weight:600;margin-bottom:16px}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:8px}
+.footer-col a{color:var(--text-dim);text-decoration:none;font-size:0.9rem;transition:var(--transition)}
+.footer-col a:hover{color:var(--gold)}
+.footer-bottom{max-width:1400px;margin:32px auto 0;padding-top:24px;border-top:1px solid var(--border-subtle);display:flex;justify-content:space-between;align-items:center;font-size:0.8rem;color:var(--text-dim)}
+.footer-social{display:flex;gap:16px}
+.footer-social a{color:var(--text-dim);font-size:1.2rem;transition:var(--transition)}
+.footer-social a:hover{color:var(--gold)}
+
+/* TOAST */
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(100px);background:rgba(28,17,16,0.95);backdrop-filter:blur(10px);color:var(--text-light);padding:14px 28px;border-radius:50px;font-size:0.9rem;font-weight:500;z-index:3000;transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1);border:1px solid var(--border-subtle);box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:10px}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.toast i{color:var(--success)}
+
+/* RUNNER ANIMATION */
+#runner{position:fixed;bottom:-80px;left:0;z-index:2500;font-size:3rem;transition:bottom 0.5s cubic-bezier(0.34,1.56,0.64,1);pointer-events:none}
+#runner.active{bottom:30px;animation:runAcross 4s ease-in-out forwards}
+@keyframes runAcross{0%{left:-60px}100%{left:110%}}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+.navbar-inner{padding:10px 16px}
+.brand-text h1{font-size:1.1rem}
+.nav-info{display:none}
+.hero{height:75vh;min-height:480px}
+.hero-title{font-size:2rem}
+.hero-stats{gap:24px}
+.hero-stat-number{font-size:1.5rem}
+.categories{padding:8px 16px;gap:4px}
+.categories li{padding:8px 16px;font-size:0.8rem}
+.products-grid{grid-template-columns:1fr;gap:16px}
+.menu-section{padding:40px 0 24px}
+.section-title{font-size:1.5rem}
+.cart-sidebar{width:100vw}
+.footer-inner{grid-template-columns:1fr;gap:24px}
+.footer-bottom{flex-direction:column;gap:12px;text-align:center}
+.floating-cart{display:flex;position:fixed;bottom:24px;right:24px;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--ember));color:white;border:none;font-size:1.3rem;cursor:pointer;z-index:998;box-shadow:0 6px 25px rgba(212,35,26,0.5);transition:var(--transition);align-items:center;justify-content:center}
+.floating-cart:hover{transform:scale(1.1)}
+.floating-cart .cart-badge{position:absolute;top:-2px;right:-2px;background:var(--accent);color:var(--dark);font-size:0.7rem;font-weight:700;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.cart-toggle{display:none}
+.form-row{grid-template-columns:1fr}
+}
+@media(min-width:769px) and (max-width:1024px){.products-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar" id="navbar">
+    <div class="navbar-inner">
         <div class="brand">
-          <img src="img/logo.png" alt="Logo Chicho’s" class="brand-logo" />
-          <div class="brand-text">
-            <h1>Chicho’s Asados</h1>
-            <p>Comidas rápidas</p>
-          </div>
-          <div class="estado-container">
-            <span id="estadoNegocio" class="estado-indicador"></span>
-            <span id="contadorApertura" class="estado-contador"></span>
-          </div>
-        </div>
-      </div>
-
-      <div class="navbar-info">
-        <span
-          ><i class="fa-sharp-duotone fa-solid fa-map-pin"></i> Los
-          alcazares</span
-        ><br />
-        <span>Entrega 30 - 40 min</span>
-      </div>      
-    </header>
-    <div class="categories-bar">
-        <ul class="categories">
-          <a class="a" href="#Salchipapas"
-            ><li class="active" data-target="salchipapas">Salchipapas</li></a
-          >
-          <a class="a" href="#Hamburguesas"
-            ><li data-target="hamburguesas" id="hamburguesas">
-              Hamburguesas
-            </li></a
-          >
-          <a class="a" href="#Asados"><li data-target="asados">Asados</li></a>
-          <a class="a" href="#Combos"><li data-target="combos">Combos</li></a>
-          <a class="a" href="#Perros"><li data-target="perros">Perros</li></a>
-          <a class="a" href="#Adicciones"
-            ><li data-target="adiciones">Adiciones</li></a
-          >
-          <a class="a" href="#Bebidas"
-            ><li data-target="bebidas">Bebidas</li></a
-          >
-        </ul>
-      </div>
-    <section id="Salchipapas">
-      <h2>Salchipapas</h2>
-
-      <div class="products-grid">
-        <div class="product-card" data-id="Maxichichos">
-          <div class="product-info">
-            <h3>maxichichos</h3>
-            <p>
-              papa amarilla, papa a la francesa, salchicha, costilla, cebolla,
-              maicitos, pollo, cerdo, queso cheddar, tocineta y salsas
-            </p>
-            <span class="price">$50.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/Salchipapas/SalchiMaxichichos.webp"
-            alt="Maxichichos"
-            class="product-img"
-            loading="lazy"
-          />
-        </div>
-        <div class="product-card" data-id="Megafamiliar">
-          <div class="product-info">
-            <h3>Mega familiar</h3>
-            <p>
-              papa amarilla, papa a la francesa, salchicha, costilla, cebolla,
-              maicitos, pollo desmechado, carne de hamburguesa, queso, tocineta
-              y salsas
-            </p>
-            <span class="price">$30.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/Salchipapas/SalchiMegafamiliar.webp"
-            alt="Megafamiliar"
-            class="product-img"
-            loading="lazy"
-          />
-        </div>
-        <div class="product-card" data-id="Mega">
-          <div class="product-info">
-            <h3>Mega</h3>
-            <p>
-              papa amarilla, papa a la francesa, salchicha, costilla, cebolla,
-              maicitos, pollo desmechado, queso, tocineta y salsas
-            </p>
-            <span class="price">$25.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/Salchipapas/SalchiMega.webp"
-            alt="Mega"
-            class="product-img"
-            loading="lazy"
-          />
-        </div>
-        <div class="product-card" data-id="Madura">
-          <div class="product-info">
-            <h3>Madura</h3>
-            <p>
-              papa amarilla, papa a la francesa, salchicha, costilla, maduritos,
-              maicitos, queso, tocineta y salsas
-            </p>
-            <span class="price">$22.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/Salchipapas/salchiMadura.webp"
-            alt="Madura"
-            class="product-img"
-            loading="lazy"
-          />
-        </div>
-        <div class="product-card" data-id="Mixta">
-          <div class="product-info">
-            <h3>Mixta</h3>
-            <p>
-              papa amarilla, papa a la francesa, salchicha, costilla, cebolla,
-              queso, tocineta y salsas
-            </p>
-            <span class="price">$22.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/Salchipapas/salchiMixta.webp"
-            alt="Mixta"
-            class="product-img"
-            loading="lazy"
-          />
-        </div>
-        <div class="product-card" data-id="SalchiBurguer">
-          <div class="product-info">
-            <h3>Burguer</h3>
-            <p>
-              papa amarilla, papa a la francesa, salchicha, cebolla, queso,
-              carne de hamburguesa y salsas
-            </p>
-            <span class="price">$15.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/Salchipapas/salchiburguer.webp"
-            alt="Salchiburger"
-            class="product-img"
-            loading="lazy"
-          />
-        </div>
-        <div class="product-card" data-id="SalchiEspecial">
-          <div class="product-info">
-            <h3>Especial</h3>
-            <p>
-              papa amarilla, papa a la francesa, salchicha, cebolla, queso,
-              tocineta y salsas
-            </p>
-            <span class="price">$15.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/Salchipapas/salchiEspecial.webp"
-            alt="Especial"
-            class="product-img"
-            loading="lazy"
-          />
-        </div>
-        <div class="product-card" data-id="Gratinada">
-          <div class="product-info">
-            <h3>Gratinada</h3>
-            <p>papa a la francesa, salchicha, queso y salsas</p>
-            <span class="price">$12.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/Salchipapas/SalchiGratinada.webp"
-            alt="gratinada"
-            class="product-img"
-            loading="lazy"
-          />
-        </div>
-        <div class="product-card" data-id="SalchiSencilla">
-          <div class="product-info">
-            <h3>Sencilla</h3>
-            <p>papa a la francesa, salchicha y salsas</p>
-            <span class="price">$9.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/Salchipapas/salchiSencilla.webp"
-            alt="Sencilla"
-            class="product-img"
-            loading="lazy"
-          />
-        </div>
-        <div class="product-card" data-id="SalchiCriolla">
-          <div class="product-info">
-            <h3>Criolla</h3>
-            <p>papa amarilla, salchicha y salsas</p>
-            <span class="price">$9.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/Salchipapas/salchiSencilla.webp"
-            alt="Criolla"
-            class="product-img"
-            loading="lazy"
-          />
-        </div>
-      </div>
-    </section>
-    <section id="Hamburguesas">
-      <h2>Hamburguesas</h2>
-
-      <div class="products-grid">
-        <div class="product-card" data-id="Patrona">
-          <div class="product-info">
-            <h3>Patrona</h3>
-            <p>
-              Carne angus, filete de pollo, carne al barril, ripio de papa,
-              queso cheddar, queso blanco, tocineta, cebolla, lechuga, tomate,
-              salsa y guacamole
-            </p>
-            <span class="price">$26.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/Hamburguesas/patrona.webp"
-            alt="mega familiar"
-            class="product-img"
-            loading="lazy"
-          />
-        </div>
-        <div class="product-card" data-id="Angust">
-          <div class="product-info">
-            <h3>Angust</h3>
-            <p>
-              Carne angus, queso cheddar, queso blanco, cebolla, lechuga,
-              tomate, salsa + porcion de papas
-            </p>
-            <span class="price">$20.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/Hamburguesas/angust.webp"
-            alt="mega familiar"
-            class="product-img"
-            loading="lazy"
-          />
-        </div>
-        <div class="product-card" data-id="Depollo">
-          <div class="product-info">
-            <h3>De pollo</h3>
-            <p>
-              Filete de pollo, queso cheddar, queso blanco, cebolla, lechuga,
-              tomate, salsa + porcion de papas
-            </p>
-            <span class="price">$17.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/Hamburguesas/pollo.webp"
-            alt="mega familiar"
-            class="product-img"
-            loading="lazy"
-          />
-        </div>
-        <div class="product-card" data-id="HambEspecial">
-          <div class="product-info">
-            <h3>Especial</h3>
-            <p>
-              Doble carne de res, ripio de papa, doble queso, tocineta, lechuga,
-              cebolla, tomate y salsas(Verde, Piña, Roja, Mostaza y BBQ).
-            </p>
-            <span class="price">$20.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/Hamburguesas/especial.webp"
-            alt="Hamburguesa Especial"
-            class="product-img"
-            loading="lazy"
-          />
-        </div>
-        <div class="product-card" data-id="HambuSuper">
-          <div class="product-info">
-            <h3>Super</h3>
-            <p>
-              Carne de res, ripio de papa, doble queso, tocineta, lechuga,
-              cebolla, tomate y salsas(Verde, Piña, Roja, Mostaza y BBQ).
-            </p>
-            <span class="price">$14.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/Hamburguesas/super.webp"
-            alt="Hamburguesa Super"
-            class="product-img"
-            loading="lazy"
-          />
-        </div>
-        <div class="product-card" data-id="HambuJunior">
-          <div class="product-info">
-            <h3>Junior</h3>
-            <p>
-              Carne de res, ripio de papa, doble queso, tocineta y salsas(Verde,
-              Piña, Roja, Mostaza y BBQ).
-            </p>
-            <span class="price">$10.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/Hamburguesas/junior.webp"
-            alt="Hamburguesa Super"
-            class="product-img"
-            loading="lazy"
-          />
-        </div>
-      </div>
-    </section>
-    <section id="Asados">
-      <h2>Asados</h2>
-
-      <div class="products-grid">
-        <div class="product-card" data-id="PicadaBarrilFamiliar">
-          <div class="product-info">
-            <h3>Picada al Barril familiar</h3>
-            <p>
-              800gr de proteina<br />
-              Costilla san luis, panceta, bondiola de cerdo choriao. acompañado
-              de maduro, papa salada, arepa y piña
-            </p>
-            <span class="price">$60.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/Asados/picadaal barril.webp"
-            alt="PicadaBarrilFamiliar"
-            class="product-img"
-            loading="lazy"
-          />
-        </div>
-        <div class="product-card" data-id="PicadaBarrilDos">
-          <div class="product-info">
-            <h3>Picada al Barril para 2</h3>
-            <p>
-              600gr de proteina<br />
-              Costilla san luis, panceta, bondiola de cerdo choriao. acompañado
-              de maduro, papa salada, arepa y piña
-            </p>
-            <span class="price">$45.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/Asados/picadaal barril.webp"
-            alt="PicadaBarrilDos"
-            class="product-img"
-            loading="lazy"
-          />
-        </div>
-        <div class="product-card" data-id="PicadaBarrilPersonal">
-          <div class="product-info">
-            <h3>Picada al Barril personal</h3>
-            <p>
-              300gr de proteina<br />
-              Costilla san luis, panceta, bondiola de cerdo choriao. acompañado
-              de maduro, papa salada, arepa y piña
-            </p>
-            <span class="price">$32.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/Asados/picadaal barril.webp"
-            alt="PicadaBarrilPersonal"
-            class="product-img"
-            loading="lazy"
-          />
-        </div>
-        <div class="product-card" data-id="PicadaTradicionalFamiliar">
-          <div class="product-info">
-            <h3>Picada tradicional familiar</h3>
-            <p>
-              Cerdo, Pollo, Costilla BBQ, chorizo, papa a la francesa y papa
-              criolla, tostada de platano y trozos de tomate
-            </p>
-            <span class="price">$48.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/Asados/picadatradicional.webp"
-            alt="PicadaTradicionalFamiliar"
-            class="product-img"
-            loading="lazy"
-          />
-        </div>
-        <div class="product-card" data-id="PicadaTradicionalDos">
-          <div class="product-info">
-            <h3>Picada tradiccional para 2</h3>
-            <p>
-              Cerdo, Pollo, Costilla BBQ, chorizo, papa a la francesa y papa
-              criolla, tostada de platano y trozos de tomate
-            </p>
-            <span class="price">$32.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/Asados/picadatradicional.webp"
-            alt="PicadaTradicionalDos"
-            class="product-img"
-            loading="lazy"
-          />
-        </div>
-        <div class="product-card" data-id="MaduroGratinadoBarril">
-          <div class="product-info">
-            <h3>Maduro gratinado al barril</h3>
-            <p>Maduro, queso y carne al barril</p>
-            <span class="price">$12.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/Asados/maduro.webp"
-            alt="MaduroGratinadoBarril"
-            class="product-img"
-            loading="lazy"
-          />
-        </div>
-        <div class="product-card" data-id="CostillaSanLuis">
-          <div class="product-info">
-            <h3>Costilla San Luis</h3>
-            <p>
-              300gr de costilla san luis <br />
-              papa amarilla, arepa y salsa de la casa
-            </p>
-            <span class="price">$30.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/Asados/costillasanluis.webp"
-            alt="CostillaSanLuis"
-            class="product-img"
-            loading="lazy"
-          />
-        </div>
-        <div class="product-card" data-id="FileteCerdo">
-          <div class="product-info">
-            <h3>Filete de cerdo</h3>
-            <p>
-              200gr de Filete de cerdo <br />
-              Acompañado de papas a la francesa y ensalada
-            </p>
-            <span class="price">$22.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/Asados/filete de cerdo.webp"
-            alt="FileteCerdo"
-            class="product-img"
-            loading="lazy"
-          />
-        </div>
-        <div class="product-card" data-id="FiletePollo">
-          <div class="product-info">
-            <h3>Filete de pollo</h3>
-            <p>
-              200gr de Filete de pollo <br />
-              Acompañado de papas a la francesa y ensalada
-            </p>
-            <span class="price">$22.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/Asados/filete de pollo.webp"
-            alt="FiletePollo"
-            class="product-img"
-            loading="lazy"
-          />
-        </div>
-        <div class="product-card" data-id="CarneAsada">
-          <div class="product-info">
-            <h3>Carne asada</h3>
-            <p>
-              200gr de Carne de res <br />
-              Acompañado de papas a la francesa y ensalada
-            </p>
-            <span class="price">$22.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/Asados/carneasada.webp"
-            alt="CarneAsada"
-            class="product-img"
-            loading="lazy"
-          />
-        </div>
-        <div class="product-card" data-id="Chorizo">
-          <div class="product-info">
-            <h3>Chorizo de cerdo mini</h3>
-            <p>Acompañado de papas criolla</p>
-            <span class="price">$7.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/Asados/chorizo.webp"
-            alt="Chorizo"
-            class="product-img"
-            loading="lazy"
-          />
-        </div>
-        <div class="product-card" data-id="CostillaBBQ">
-          <div class="product-info">
-            <h3>Costilla BBQ</h3>
-            <p>200GR de costilla BBQ accompañado con papa amarilla</p>
-            <span class="price">$20.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/Asados/costilla.webp"
-            alt="CostillaBBQ"
-            class="product-img"
-            loading="lazy"
-          />
-        </div>
-      </div>
-    </section>
-    <section id="Combos">
-      <h2>Combos</h2>
-
-      <div class="products-grid">
-        <div class="product-card" data-id="LaDoble">
-          <div class="product-info">
-            <h3>2x1 Hamburguesas Doble</h3>
-            <p>
-              Doble Carne de 120gr, lechuga crespa, tomate, queso, ripio de
-              papas y salsa de la casa
-            </p>
-            <span class="price">$26.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/combos/Ladoble.webp"
-            alt="LaDoble"
-            class="product-img"
-            loading="lazy"
-          />
-        </div>
-        <div class="product-card" data-id="LaCallejera">
-          <div class="product-info">
-            <h3>2x1 Hamburguesas callejeras</h3>
-            <p>
-              Carne de 120gr, jamon, lechuga crespa, tomate, cebolla
-              caramelizada, queso, ripio de papas y salsa de la casa
-            </p>
-            <span class="price">$22.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/combos/callejera.webp"
-            alt="LaCallejera"
-            class="product-img"
-            loading="lazy"
-          />
-        </div>
-        <div class="product-card" data-id="LaClasica">
-          <div class="product-info">
-            <h3>2x1 Hamburguesas clasicas</h3>
-            <p>
-              Carne de 120Gr, lechuga crespa, tomate, queso, ripio de papas y
-              salsa de la casa
-            </p>
-            <span class="price">$18.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/combos/callejera.webp"
-            alt="LaClasica"
-            class="product-img"
-            loading="lazy"
-          />
-        </div>
-        <div class="product-card" data-id="Dosx1PerroEspecial">
-          <div class="product-info">
-            <h3>2x1 Perro especial</h3>
-            <p>
-              Salchicha americana, cebolla caramelizada, queso, tocineta, ripio
-              de papas y salsa de la casa
-            </p>
-            <span class="price">$20.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/combos/2x1perroespecial.webp"
-            alt="2x1PerroEspecial"
-            class="product-img"
-            loading="lazy"
-          />
-        </div>
-        <div class="product-card" data-id="Dosx1SuperPerro">
-          <div class="product-info">
-            <h3>2x1 Super perro</h3>
-            <p>
-              Salchicha sencilla, cebolla caramelizada, tocineta, ripio de papas
-              y salsa de la casa
-            </p>
-            <span class="price">$16.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/combos/2X1Superperro.webp"
-            alt="Dosx1SuperPerro"
-            class="product-img"
-            loading="lazy"
-          />
-        </div>
-        <div class="product-card" data-id="Dosx1PerroSencillo">
-          <div class="product-info">
-            <h3>2x1 Perro sencillo</h3>
-            <p>
-              Salchicha sencilla, cebolla caramelizada, ripio de papas y salsa
-              de la casa
-            </p>
-            <span class="price">$15.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/combos/2x1PerroSencillo.webp"
-            alt="Dosx1PerroSencillo"
-            class="product-img"
-            loading="lazy"
-          />
-        </div>
-        <div class="product-card" data-id="ComboDos">
-          <div class="product-info">
-            <h3>Super combo</h3>
-            <p>
-              Gaseosa econolitro <br />
-              2 Hamburguesas super <br />
-              Papas a la francesa
-            </p>
-            <span class="price">$30.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/combos/combo2.webp"
-            alt="ComboDos"
-            class="product-img"
-            loading="lazy"
-          />
-        </div>
-        <div class="product-card" data-id="Combo3">
-          <div class="product-info">
-            <h3>Combo angus</h3>
-            <p>
-              Gaseosa personal <br />
-              Hamburguesas Angus <br />
-              Papas a la francesa
-            </p>
-            <span class="price">$24.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/combos/combos1.webp"
-            alt="Combo3"
-            class="product-img"
-            loading="lazy"
-          />
-        </div>
-        <div class="product-card" data-id="Combo1">
-          <div class="product-info">
-            <h3>Combo personal</h3>
-            <p>
-              Gaseosa personal <br />
-              Hamburguesas HambuSuper <br />
-              Papas a la francesa
-            </p>
-            <span class="price">$18.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/combos/combos1.webp"
-            alt="Combo1"
-            class="product-img"
-            loading="lazy"
-          />
-        </div>
-      </div>
-    </section>
-    <section id="Perros">
-      <h2>Perros</h2>
-
-      <div class="products-grid">
-        <div class="product-card" data-id="PerroEspecial">
-          <div class="product-info">
-            <h3>Perro especial</h3>
-            <p>
-              Salchicha americana, cebolla caramelizada, queso, tocineta, ripio
-              de papas y salsa de la casa
-            </p>
-            <span class="price">$15.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/Perros/perroEspecial.webp"
-            alt="PerroEspecial"
-            class="product-img"
-            loading="lazy"
-          />
-        </div>
-        <div class="product-card" data-id="SuperPerro">
-          <div class="product-info">
-            <h3>Super perro</h3>
-            <p>
-              Salchicha sencilla, cebolla caramelizada, tocineta, ripio de papas
-              y salsa de la casa
-            </p>
-            <span class="price">$14.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/Perros/SuperPerro.webp"
-            alt="SuperPerro"
-            class="product-img"
-            loading="lazy"
-          />
-        </div>
-        <div class="product-card" data-id="PerroSencillo">
-          <div class="product-info">
-            <h3>Perro sencillo</h3>
-            <p>
-              Salchicha sencilla, cebolla caramelizada, ripio de papas y salsa
-              de la casa
-            </p>
-            <span class="price">$12.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/Perros/perrosencillo.webp"
-            alt="PerroSencillo"
-            class="product-img"
-            loading="lazy"
-          />
-        </div>
-      </div>
-    </section>
-    <section id="Adicciones">
-      <h2>Adicciones</h2>
-      <div class="products-grid">
-        <div class="product-card" data-id="PapasFrancesa">
-          <div class="product-info">
-            <h3>Porcion de papas a la francesa</h3>
-            <p>Porcion de papas a la francesa</p>
-            <span class="price">$10.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/adiciones/papas-fancesa.webp"
-            alt="PapasFrancesa"
-            class="product-img"
-            loading="lazy"
-          />
-        </div>
-        <div class="product-card" data-id="PapasCriolla">
-          <div class="product-info">
-            <h3>Porcion de papas Criolla</h3>
-            <p>Porcion de papas amarilla</p>
-            <span class="price">$10.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/adiciones/papas-criollas.webp"
-            alt="PapasCriolla"
-            class="product-img"
-            loading="lazy"
-          />
-        </div>
-      </div>
-    </section>
-    <section id="Bebidas">
-      <h2>Bebidas</h2>
-      <div class="products-grid">
-        <div class="product-card" data-id="JugosNaturales">
-          <div class="product-info">
-            <h3>Jugos Frappé</h3>
-            <p>
-              En agua <br />
-              Mango, Moral, Lulo, Fresa y maracuya
-            </p>
-            <span class="price">$8.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/Bebidas/jugos-naturales.webp"
-            alt="JugosNaturales"
-            class="product-img"
-          />
-        </div>
-        <div class="product-card" data-id="JugosLeche">
-          <div class="product-info">
-            <h3>Jugos en leche</h3>
-            <p>Mango, Moral, Lulo, Fresa y maracuya</p>
-            <span class="price">$9.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/Bebidas/jugos-naturales.webp"
-            alt="Jugos en Leche"
-            class="product-img"
-          />
-        </div>
-        <div class="product-card" data-id="Limonadas">
-          <div class="product-info">
-            <h3>Limonadas</h3>
-            <p>natural, cerezada, fresa, coco, hierba buena</p>
-            <span class="price">Desde $7.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/Bebidas/Limonadas.webp"
-            alt="Limonadas"
-            class="product-img"
-          />
-        </div>
-        <div class="product-card" data-id="CocaPersonal">
-          <div class="product-info">
-            <h3>Coca Cola personal</h3>
-            <p>400ML</p>
-            <span class="price">$3.500</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/Bebidas/Cocacolapersonal.webp"
-            alt="CocaPersonal"
-            class="product-img"
-          />
-        </div>
-        <div class="product-card" data-id="QuatroPersonal">
-          <div class="product-info">
-            <h3>Quatro personal</h3>
-            <p>400ML</p>
-            <span class="price">$3.500</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/Bebidas/Quatro_1.webp"
-            alt="QuatroPersonal"
-            class="product-img"
-          />
-        </div>
-        <div class="product-card" data-id="CocaCola1L">
-          <div class="product-info">
-            <h3>Coca Cola 1 Litro</h3>
-            <p>1000ML</p>
-            <span class="price">$5.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/Bebidas/Cocacola1l.webp"
-            alt="CocaCola1L"
-            class="product-img"
-          />
-        </div>
-        <div class="product-card" data-id="CocaCola15L">
-          <div class="product-info">
-            <h3>Coca Cola 1.5 Litro</h3>
-            <p>1500ML</p>
-            <span class="price">$7.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/Bebidas/BEBIDA-GASEOSA-ORIGINAL-1554892_a.webp"
-            alt="CocaCola15L"
-            class="product-img"
-          />
-        </div>
-        <div class="product-card" data-id="Quatro15L">
-          <div class="product-info">
-            <h3>Quatro 1.5 Litro</h3>
-            <p>1500ML</p>
-            <span class="price">$7.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/Bebidas/quatro1.5_1.webp"
-            alt="Quatro15L  "
-            class="product-img"
-          />
-        </div>
-        <div class="product-card" data-id="EconolitroPostobon">
-          <div class="product-info">
-            <h3>Econolitro postobon</h3>
-            <p>1000ML</p>
-            <span class="price">$5.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/Bebidas/ECONOLITRO-POSTOBON.webp"
-            alt="EconolitroPostobon"
-            class="product-img"
-          />
-        </div>
-        <div class="product-card" data-id="HitPersonal">
-          <div class="product-info">
-            <h3>Jugo Hit personal</h3>
-            <p>500ML</p>
-            <span class="price">$3.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/Bebidas/hitpersonal.webp"
-            alt="HitPersonal"
-            class="product-img"
-          />
-        </div>
-        <div class="product-card" data-id="BotellaAgua">
-          <div class="product-info">
-            <h3>Botella de agua</h3>
-            <p>600ML</p>
-            <span class="price">$2.500</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/Bebidas/botella de agua.webp"
-            alt="BotellaAgua"
-            class="product-img"
-          />
-        </div>
-        <div class="product-card" data-id="Cerveza">
-          <div class="product-info">
-            <h3>Cerveza en lata</h3>
-            <p>330ML</p>
-            <span class="price">$4.000</span>
-
-            <button class="add-btn">Agregar</button>
-          </div>
-
-          <img
-            src="img/productos/Bebidas/cervezalata.webp"
-            alt="Cerveza"
-            class="product-img"
-          />
-        </div>
-      </div>
-    </section>
-    <!-- ================= MODAL PRODUCTO ================= -->
-    <div class="modal" id="productModal">
-      <div class="modal-content">
-        <div class="modal-layout">
-          <!-- COLUMNA IZQUIERDA -->
-          <div class="modal-left">
-            <img id="modalImage" class="modal-image" />
-
-            <div class="image-actions">
-              <button id="closeModal" class="small-btn cancel-btn">
-                Cancelar
-              </button>
-              <button id="confirmAdd" class="small-btn confirm-btn">
-                Agregar
-              </button>
+            <img src="img/logo.png" alt="Logo Chicho's" class="brand-logo" onerror="this.style.display='none'">
+            <div class="brand-text">
+                <h1>Chicho's Asados</h1>
+                <p>Comidas rapidas</p>
             </div>
-          </div>
+        </div>
+        <div class="navbar-status">
+            <div class="nav-info">
+                <span><i class="fa-solid fa-map-pin"></i> Los Alcazares</span>
+                <span><i class="fa-solid fa-clock"></i> 30-40 min</span>
+            </div>
+            <span id="estadoNegocio" class="abierto"></span>
+            <span id="contadorApertura"></span>
+            <button class="cart-toggle" id="cartIcon">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span id="cartCount">0</span>
+            </button>
+        </div>
+    </div>
+</header>
 
-          <!-- COLUMNA DERECHA -->
-          <div class="modal-right">
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <div class="hero-badge"><i class="fa-solid fa-fire"></i> Sabor a parrilla autentico</div>
+        <h1 class="hero-title">Lo Mejor en <span class="highlight">Asados</span> y Comidas Rapidas</h1>
+        <p class="hero-subtitle">Sabores autenticos, ingredientes frescos y la mejor atencion. Haz tu pedido en linea y disfruta en casa.</p>
+        <a href="#Salchipapas" class="hero-cta">Ver Menu <i class="fa-solid fa-arrow-down"></i></a>
+        <div class="hero-stats">
+            <div class="hero-stat"><div class="hero-stat-number">50+</div><div class="hero-stat-label">Platos</div></div>
+            <div class="hero-stat"><div class="hero-stat-number">30min</div><div class="hero-stat-label">Entrega</div></div>
+            <div class="hero-stat"><div class="hero-stat-number">5&#9733;</div><div class="hero-stat-label">Calidad</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- CATEGORIES BAR -->
+<div class="categories-bar" id="categoriesBar">
+    <ul class="categories" id="categoriesNav">
+        <a href="#Salchipapas"><li class="active">Salchipapas</li></a>
+        <a href="#Hamburguesas"><li>Hamburguesas</li></a>
+        <a href="#Asados"><li>Asados</li></a>
+        <a href="#Combos"><li>Combos</li></a>
+        <a href="#Perros"><li>Perros</li></a>
+        <a href="#Adiciones"><li>Adiciones</li></a>
+        <a href="#Bebidas"><li>Bebidas</li></a>
+    </ul>
+</div>
+
+<!-- MENU CONTENT -->
+<main class="menu-container">
+
+<!-- SALCHIPAPAS -->
+<section id="Salchipapas" class="menu-section">
+    <div class="section-header"><div class="section-icon salchipapas"><i class="fa-solid fa-fire"></i></div><h2 class="section-title">Salchipapas</h2><div class="section-line"></div></div>
+    <div class="products-grid">
+        <div class="product-card" data-id="Maxichichos"><div class="product-card-img"><img src="img/productos/Salchipapas/SalchiMaxichichos.webp" alt="Maxichichos" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$50.000</span></div><div class="product-card-body"><h3 class="product-name">Maxichichos</h3><p class="product-desc">Papa amarilla, papa a la francesa, salchicha, costilla, cebolla, maicitos, pollo, cerdo, queso cheddar, tocineta y salsas</p><div class="product-footer"><span class="product-price">$50.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="Megafamiliar"><div class="product-card-img"><img src="img/productos/Salchipapas/SalchiMegafamiliar.webp" alt="Mega Familiar" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$30.000</span></div><div class="product-card-body"><h3 class="product-name">Mega Familiar</h3><p class="product-desc">Papa amarilla, papa a la francesa, salchicha, costilla, cebolla, maicitos, pollo desmechado, carne de hamburguesa, queso, tocineta y salsas</p><div class="product-footer"><span class="product-price">$30.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="Mega"><div class="product-card-img"><img src="img/productos/Salchipapas/SalchiMega.webp" alt="Mega" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$25.000</span></div><div class="product-card-body"><h3 class="product-name">Mega</h3><p class="product-desc">Papa amarilla, papa a la francesa, salchicha, costilla, cebolla, maicitos, pollo desmechado, queso, tocineta y salsas</p><div class="product-footer"><span class="product-price">$25.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="Madura"><div class="product-card-img"><img src="img/productos/Salchipapas/salchiMadura.webp" alt="Madura" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$22.000</span></div><div class="product-card-body"><h3 class="product-name">Madura</h3><p class="product-desc">Papa amarilla, papa a la francesa, salchicha, costilla, maduritos, maicitos, queso, tocineta y salsas</p><div class="product-footer"><span class="product-price">$22.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="Mixta"><div class="product-card-img"><img src="img/productos/Salchipapas/salchiMixta.webp" alt="Mixta" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$22.000</span></div><div class="product-card-body"><h3 class="product-name">Mixta</h3><p class="product-desc">Papa amarilla, papa a la francesa, salchicha, costilla, cebolla, queso, tocineta y salsas</p><div class="product-footer"><span class="product-price">$22.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="SalchiBurguer"><div class="product-card-img"><img src="img/productos/Salchipapas/salchiburguer.webp" alt="Burguer" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$15.000</span></div><div class="product-card-body"><h3 class="product-name">Burguer</h3><p class="product-desc">Papa amarilla, papa a la francesa, salchicha, cebolla, queso, carne de hamburguesa y salsas</p><div class="product-footer"><span class="product-price">$15.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="SalchiEspecial"><div class="product-card-img"><img src="img/productos/Salchipapas/salchiEspecial.webp" alt="Especial" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$15.000</span></div><div class="product-card-body"><h3 class="product-name">Especial</h3><p class="product-desc">Papa amarilla, papa a la francesa, salchicha, cebolla, queso, tocineta y salsas</p><div class="product-footer"><span class="product-price">$15.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="Gratinada"><div class="product-card-img"><img src="img/productos/Salchipapas/SalchiGratinada.webp" alt="Gratinada" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$12.000</span></div><div class="product-card-body"><h3 class="product-name">Gratinada</h3><p class="product-desc">Papa a la francesa, salchicha, queso y salsas</p><div class="product-footer"><span class="product-price">$12.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="SalchiSencilla"><div class="product-card-img"><img src="img/productos/Salchipapas/salchiSencilla.webp" alt="Sencilla" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$9.000</span></div><div class="product-card-body"><h3 class="product-name">Sencilla</h3><p class="product-desc">Papa a la francesa, salchicha y salsas</p><div class="product-footer"><span class="product-price">$9.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="SalchiCriolla"><div class="product-card-img"><img src="img/productos/Salchipapas/salchiSencilla.webp" alt="Criolla" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$9.000</span></div><div class="product-card-body"><h3 class="product-name">Criolla</h3><p class="product-desc">Papa amarilla, salchicha y salsas</p><div class="product-footer"><span class="product-price">$9.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+    </div>
+</section>
+
+<!-- HAMBURGUESAS -->
+<section id="Hamburguesas" class="menu-section">
+    <div class="section-header"><div class="section-icon hamburguesas"><i class="fa-solid fa-burger"></i></div><h2 class="section-title">Hamburguesas</h2><div class="section-line"></div></div>
+    <div class="products-grid">
+        <div class="product-card" data-id="Patrona"><div class="product-card-img"><img src="img/productos/Hamburguesas/patrona.webp" alt="Patrona" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$26.000</span></div><div class="product-card-body"><h3 class="product-name">Patrona</h3><p class="product-desc">Carne angus, filete de pollo, carne al barril, ripio de papa, queso cheddar, queso blanco, tocineta, cebolla, lechuga, tomate, salsa y guacamole</p><div class="product-footer"><span class="product-price">$26.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="Angust"><div class="product-card-img"><img src="img/productos/Hamburguesas/angust.webp" alt="Angust" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$20.000</span></div><div class="product-card-body"><h3 class="product-name">Angust</h3><p class="product-desc">Carne angus, queso cheddar, queso blanco, cebolla, lechuga, tomate, salsa + porcion de papas</p><div class="product-footer"><span class="product-price">$20.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="Depollo"><div class="product-card-img"><img src="img/productos/Hamburguesas/pollo.webp" alt="De Pollo" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$17.000</span></div><div class="product-card-body"><h3 class="product-name">De Pollo</h3><p class="product-desc">Filete de pollo, queso cheddar, queso blanco, cebolla, lechuga, tomate, salsa + porcion de papas</p><div class="product-footer"><span class="product-price">$17.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="HambEspecial"><div class="product-card-img"><img src="img/productos/Hamburguesas/especial.webp" alt="Especial" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$20.000</span></div><div class="product-card-body"><h3 class="product-name">Especial</h3><p class="product-desc">Doble carne de res, ripio de papa, doble queso, tocineta, lechuga, cebolla, tomate y salsas</p><div class="product-footer"><span class="product-price">$20.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="HambuSuper"><div class="product-card-img"><img src="img/productos/Hamburguesas/super.webp" alt="Super" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$14.000</span></div><div class="product-card-body"><h3 class="product-name">Super</h3><p class="product-desc">Carne de res, ripio de papa, doble queso, tocineta, lechuga, cebolla, tomate y salsas</p><div class="product-footer"><span class="product-price">$14.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="HambuJunior"><div class="product-card-img"><img src="img/productos/Hamburguesas/junior.webp" alt="Junior" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$10.000</span></div><div class="product-card-body"><h3 class="product-name">Junior</h3><p class="product-desc">Carne de res, ripio de papa, doble queso, tocineta y salsas</p><div class="product-footer"><span class="product-price">$10.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+    </div>
+</section>
+
+<!-- ASADOS -->
+<section id="Asados" class="menu-section">
+    <div class="section-header"><div class="section-icon asados"><i class="fa-solid fa-fire-burner"></i></div><h2 class="section-title">Asados</h2><div class="section-line"></div></div>
+    <div class="products-grid">
+        <div class="product-card" data-id="PicadaBarrilFamiliar"><div class="product-card-img"><img src="img/productos/Asados/picadaal barril.webp" alt="Picada al Barril Familiar" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$60.000</span></div><div class="product-card-body"><h3 class="product-name">Picada al Barril Familiar</h3><p class="product-desc">800gr de proteina. Costilla san luis, panceta, bondiola de cerdo choriao. Acompanado de maduro, papa salada, arepa y pina</p><div class="product-footer"><span class="product-price">$60.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="PicadaBarrilDos"><div class="product-card-img"><img src="img/productos/Asados/picadaal barril.webp" alt="Picada al Barril para 2" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$45.000</span></div><div class="product-card-body"><h3 class="product-name">Picada al Barril para 2</h3><p class="product-desc">600gr de proteina. Costilla san luis, panceta, bondiola de cerdo choriao. Acompanado de maduro, papa salada, arepa y pina</p><div class="product-footer"><span class="product-price">$45.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="PicadaBarrilPersonal"><div class="product-card-img"><img src="img/productos/Asados/picadaal barril.webp" alt="Picada al Barril Personal" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$32.000</span></div><div class="product-card-body"><h3 class="product-name">Picada al Barril Personal</h3><p class="product-desc">300gr de proteina. Costilla san luis, panceta, bondiola de cerdo choriao. Acompanado de maduro, papa salada, arepa y pina</p><div class="product-footer"><span class="product-price">$32.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="PicadaTradicionalFamiliar"><div class="product-card-img"><img src="img/productos/Asados/picadatradicional.webp" alt="Picada Tradicional Familiar" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$48.000</span></div><div class="product-card-body"><h3 class="product-name">Picada Tradicional Familiar</h3><p class="product-desc">Cerdo, Pollo, Costilla BBQ, chorizo, papa a la francesa y papa criolla, tostada de platano y trozos de tomate</p><div class="product-footer"><span class="product-price">$48.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="PicadaTradicionalDos"><div class="product-card-img"><img src="img/productos/Asados/picadaTradicional.webp" alt="Picada Tradicional para 2" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$32.000</span></div><div class="product-card-body"><h3 class="product-name">Picada Tradicional para 2</h3><p class="product-desc">Cerdo, Pollo, Costilla BBQ, chorizo, papa a la francesa y papa criolla, tostada de platano y trozos de tomate</p><div class="product-footer"><span class="product-price">$32.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="MaduroGratinadoBarril"><div class="product-card-img"><img src="img/productos/Asados/maduro.webp" alt="Maduro Gratinado" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$12.000</span></div><div class="product-card-body"><h3 class="product-name">Maduro Gratinado al Barril</h3><p class="product-desc">Maduro, queso y carne al barril</p><div class="product-footer"><span class="product-price">$12.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="CostillaSanLuis"><div class="product-card-img"><img src="img/productos/Asados/costillaSanLuis.webp" alt="Costilla San Luis" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$30.000</span></div><div class="product-card-body"><h3 class="product-name">Costilla San Luis</h3><p class="product-desc">300gr de costilla san luis, papa amarilla, arepa y salsa de la casa</p><div class="product-footer"><span class="product-price">$30.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="FileteCerdo"><div class="product-card-img"><img src="img/productos/Asados/filete de cerdo.webp" alt="Filete de Cerdo" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$22.000</span></div><div class="product-card-body"><h3 class="product-name">Filete de Cerdo</h3><p class="product-desc">200gr de Filete de cerdo acompanado de papas a la francesa y ensalada</p><div class="product-footer"><span class="product-price">$22.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="FiletePollo"><div class="product-card-img"><img src="img/productos/Asados/filete de pollo.webp" alt="Filete de Pollo" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$22.000</span></div><div class="product-card-body"><h3 class="product-name">Filete de Pollo</h3><p class="product-desc">200gr de Filete de pollo acompanado de papas a la francesa y ensalada</p><div class="product-footer"><span class="product-price">$22.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="CarneAsada"><div class="product-card-img"><img src="img/productos/Asados/carneasada.webp" alt="Carne Asada" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$22.000</span></div><div class="product-card-body"><h3 class="product-name">Carne Asada</h3><p class="product-desc">200gr de Carne de res acompanado de papas a la francesa y ensalada</p><div class="product-footer"><span class="product-price">$22.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="Chorizo"><div class="product-card-img"><img src="img/productos/Asados/chorizo.webp" alt="Chorizo" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$7.000</span></div><div class="product-card-body"><h3 class="product-name">Chorizo de Cerdo Mini</h3><p class="product-desc">Acompanado de papas criolla</p><div class="product-footer"><span class="product-price">$7.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="CostillaBBQ"><div class="product-card-img"><img src="img/productos/Asados/costilla.webp" alt="Costilla BBQ" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$20.000</span></div><div class="product-card-body"><h3 class="product-name">Costilla BBQ</h3><p class="product-desc">200gr de costilla BBQ acompanado con papa amarilla</p><div class="product-footer"><span class="product-price">$20.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+    </div>
+</section>
+
+<!-- COMBOS -->
+<section id="Combos" class="menu-section">
+    <div class="section-header"><div class="section-icon combos"><i class="fa-solid fa-box-open"></i></div><h2 class="section-title">Combos</h2><div class="section-line"></div></div>
+    <div class="products-grid">
+        <div class="product-card" data-id="LaDoble"><div class="product-card-img"><img src="img/productos/Combos/Ladoble.webp" alt="2x1 Doble" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$26.000</span></div><div class="product-card-body"><h3 class="product-name">2x1 Hamburguesas Doble</h3><p class="product-desc">Doble Carne de 120gr, lechuga crespa, tomate, queso, ripio de papas y salsa de la casa</p><div class="product-footer"><span class="product-price">$26.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="LaCallejera"><div class="product-card-img"><img src="img/productos/Combos/callejera.webp" alt="2x1 Callejeras" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$22.000</span></div><div class="product-card-body"><h3 class="product-name">2x1 Hamburguesas Callejeras</h3><p class="product-desc">Carne de 120gr, jamon, lechuga crespa, tomate, cebolla caramelizada, queso, ripio de papas y salsa de la casa</p><div class="product-footer"><span class="product-price">$22.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="LaClasica"><div class="product-card-img"><img src="img/productos/Combos/callejera.webp" alt="2x1 Clasicas" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$18.000</span></div><div class="product-card-body"><h3 class="product-name">2x1 Hamburguesas Clasicas</h3><p class="product-desc">Carne de 120gr, lechuga crespa, tomate, queso, ripio de papas y salsa de la casa</p><div class="product-footer"><span class="product-price">$18.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="Dosx1PerroEspecial"><div class="product-card-img"><img src="img/productos/Combos/2x1perroEspecial.webp" alt="2x1 Perro Especial" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$20.000</span></div><div class="product-card-body"><h3 class="product-name">2x1 Perro Especial</h3><p class="product-desc">Salchicha americana, cebolla caramelizada, queso, tocineta, ripio de papas y salsa de la casa</p><div class="product-footer"><span class="product-price">$20.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="Dosx1SuperPerro"><div class="product-card-img"><img src="img/productos/Combos/2x1superPerro.webp" alt="2x1 Super Perro" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$16.000</span></div><div class="product-card-body"><h3 class="product-name">2x1 Super Perro</h3><p class="product-desc">Salchicha sencilla, cebolla caramelizada, tocineta, ripio de papas y salsa de la casa</p><div class="product-footer"><span class="product-price">$16.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="Dosx1PerroSencillo"><div class="product-card-img"><img src="img/productos/Combos/2x1perroSencillo.webp" alt="2x1 Perro Sencillo" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$15.000</span></div><div class="product-card-body"><h3 class="product-name">2x1 Perro Sencillo</h3><p class="product-desc">Salchicha sencilla, cebolla caramelizada, ripio de papas y salsa de la casa</p><div class="product-footer"><span class="product-price">$15.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="ComboDos"><div class="product-card-img"><img src="img/productos/Combos/combo2.webp" alt="Super Combo" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$30.000</span></div><div class="product-card-body"><h3 class="product-name">Super Combo</h3><p class="product-desc">Gaseosa econolitro, 2 Hamburguesas super, Papas a la francesa</p><div class="product-footer"><span class="product-price">$30.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="Combo3"><div class="product-card-img"><img src="img/productos/Combos/combos1.webp" alt="Combo Angus" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$24.000</span></div><div class="product-card-body"><h3 class="product-name">Combo Angus</h3><p class="product-desc">Gaseosa personal, Hamburguesas Angus, Papas a la francesa</p><div class="product-footer"><span class="product-price">$24.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="Combo1"><div class="product-card-img"><img src="img/productos/Combos/combos1.webp" alt="Combo Personal" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$18.000</span></div><div class="product-card-body"><h3 class="product-name">Combo Personal</h3><p class="product-desc">Gaseosa personal, Hamburguesas Super, Papas a la francesa</p><div class="product-footer"><span class="product-price">$18.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+    </div>
+</section>
+
+<!-- PERROS -->
+<section id="Perros" class="menu-section">
+    <div class="section-header"><div class="section-icon perros"><i class="fa-solid fa-hotdog"></i></div><h2 class="section-title">Perros</h2><div class="section-line"></div></div>
+    <div class="products-grid">
+        <div class="product-card" data-id="PerroEspecial"><div class="product-card-img"><img src="img/productos/Perros/perroEspecial.webp" alt="Perro Especial" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$15.000</span></div><div class="product-card-body"><h3 class="product-name">Perro Especial</h3><p class="product-desc">Salchicha americana, cebolla caramelizada, queso, tocineta, ripio de papas y salsa de la casa</p><div class="product-footer"><span class="product-price">$15.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="SuperPerro"><div class="product-card-img"><img src="img/productos/Perros/superPerro.webp" alt="Super Perro" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$14.000</span></div><div class="product-card-body"><h3 class="product-name">Super Perro</h3><p class="product-desc">Salchicha sencilla, cebolla caramelizada, tocineta, ripio de papas y salsa de la casa</p><div class="product-footer"><span class="product-price">$14.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="PerroSencillo"><div class="product-card-img"><img src="img/productos/Perros/perroSencillo.webp" alt="Perro Sencillo" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$12.000</span></div><div class="product-card-body"><h3 class="product-name">Perro Sencillo</h3><p class="product-desc">Salchicha sencilla, cebolla caramelizada, ripio de papas y salsa de la casa</p><div class="product-footer"><span class="product-price">$12.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+    </div>
+</section>
+
+<!-- ADICIONES -->
+<section id="Adiciones" class="menu-section">
+    <div class="section-header"><div class="section-icon adiciones"><i class="fa-solid fa-plus"></i></div><h2 class="section-title">Adiciones</h2><div class="section-line"></div></div>
+    <div class="products-grid">
+        <div class="product-card" data-id="PapasFrancesa"><div class="product-card-img"><img src="img/productos/Adiciones/papas-fancesa.webp" alt="Papas a la Francesa" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$10.000</span></div><div class="product-card-body"><h3 class="product-name">Papas a la Francesa</h3><p class="product-desc">Porcion de papas a la francesa</p><div class="product-footer"><span class="product-price">$10.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="PapasCriolla"><div class="product-card-img"><img src="img/productos/Adiciones/papas-criollas.webp" alt="Papas Criolla" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$10.000</span></div><div class="product-card-body"><h3 class="product-name">Papas Criolla</h3><p class="product-desc">Porcion de papas amarilla</p><div class="product-footer"><span class="product-price">$10.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+    </div>
+</section>
+
+<!-- BEBIDAS -->
+<section id="Bebidas" class="menu-section">
+    <div class="section-header"><div class="section-icon bebidas"><i class="fa-solid fa-glass-water"></i></div><h2 class="section-title">Bebidas</h2><div class="section-line"></div></div>
+    <div class="products-grid">
+        <div class="product-card" data-id="JugosNaturales"><div class="product-card-img"><img src="img/productos/Bebidas/jugos-naturales.webp" alt="Jugos Frappe" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#1A2A3A,#2A3D4E)'"><span class="price-tag">$8.000</span></div><div class="product-card-body"><h3 class="product-name">Jugos Frappe</h3><p class="product-desc">En agua: Mango, Mora, Lulo, Fresa y Maracuya</p><div class="product-footer"><span class="product-price">$8.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="JugosLeche"><div class="product-card-img"><img src="img/productos/Bebidas/jugos-naturales.webp" alt="Jugos en Leche" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#1A2A3A,#2A3D4E)'"><span class="price-tag">$9.000</span></div><div class="product-card-body"><h3 class="product-name">Jugos en Leche</h3><p class="product-desc">Mango, Mora, Lulo, Fresa y Maracuya</p><div class="product-footer"><span class="product-price">$9.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="Limonadas"><div class="product-card-img"><img src="img/productos/Bebidas/limonadas.webp" alt="Limonadas" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#1A2A3A,#2A3D4E)'"><span class="price-tag">Desde $7.000</span></div><div class="product-card-body"><h3 class="product-name">Limonadas</h3><p class="product-desc">Natural, cerezada, fresa, coco, hierba buena</p><div class="product-footer"><span class="product-price">Desde $7.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="CocaPersonal"><div class="product-card-img"><img src="img/productos/Bebidas/Cocacolapersonal.webp" alt="Coca Cola Personal" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#1A2A3A,#2A3D4E)'"><span class="price-tag">$4.000</span></div><div class="product-card-body"><h3 class="product-name">Coca Cola Personal</h3><p class="product-desc">400ML</p><div class="product-footer"><span class="product-price">$4.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="QuatroPersonal"><div class="product-card-img"><img src="img/productos/Bebidas/Quatro_1.webp" alt="Quatro Personal" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#1A2A3A,#2A3D4E)'"><span class="price-tag">$4.000</span></div><div class="product-card-body"><h3 class="product-name">Quatro Personal</h3><p class="product-desc">400ML</p><div class="product-footer"><span class="product-price">$4.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="CocaCola1L"><div class="product-card-img"><img src="img/productos/Bebidas/Cocacola1l.webp" alt="Coca Cola 1 Litro" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#1A2A3A,#2A3D4E)'"><span class="price-tag">$5.000</span></div><div class="product-card-body"><h3 class="product-name">Coca Cola 1 Litro</h3><p class="product-desc">1000ML</p><div class="product-footer"><span class="product-price">$5.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="CocaCola15L"><div class="product-card-img"><img src="img/productos/Bebidas/BEBIDA-GASEOSA-ORIGINAL-1554892_a.webp" alt="Coca Cola 1.5 Litro" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#1A2A3A,#2A3D4E)'"><span class="price-tag">$7.000</span></div><div class="product-card-body"><h3 class="product-name">Coca Cola 1.5 Litro</h3><p class="product-desc">1500ML</p><div class="product-footer"><span class="product-price">$7.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="Quatro15L"><div class="product-card-img"><img src="img/productos/Bebidas/quatro1.5_1.webp" alt="Quatro 1.5 Litro" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#1A2A3A,#2A3D4E)'"><span class="price-tag">$7.000</span></div><div class="product-card-body"><h3 class="product-name">Quatro 1.5 Litro</h3><p class="product-desc">1500ML</p><div class="product-footer"><span class="product-price">$7.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="EconolitroPostobon"><div class="product-card-img"><img src="img/productos/Bebidas/ECONOLITRO-POSTOBON.webp" alt="Econolitro" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#1A2A3A,#2A3D4E)'"><span class="price-tag">$5.000</span></div><div class="product-card-body"><h3 class="product-name">Econolitro Postobon</h3><p class="product-desc">Manzana, Uva, Pepsi, Colombia - 1000ML</p><div class="product-footer"><span class="product-price">$5.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="HitPersonal"><div class="product-card-img"><img src="img/productos/Bebidas/hitpersonal.webp" alt="Jugo Hit" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#1A2A3A,#2A3D4E)'"><span class="price-tag">$3.500</span></div><div class="product-card-body"><h3 class="product-name">Jugo Hit Personal</h3><p class="product-desc">Mango, Mora, Tropical - 500ML</p><div class="product-footer"><span class="product-price">$3.500</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="BotellaAgua"><div class="product-card-img"><img src="img/productos/Bebidas/botella de agua.webp" alt="Botella de Agua" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#1A2A3A,#2A3D4E)'"><span class="price-tag">$2.500</span></div><div class="product-card-body"><h3 class="product-name">Botella de Agua</h3><p class="product-desc">600ML</p><div class="product-footer"><span class="product-price">$2.500</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="Cerveza"><div class="product-card-img"><img src="img/productos/Bebidas/cervezalata.webp" alt="Cerveza" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#1A2A3A,#2A3D4E)'"><span class="price-tag">$4.000</span></div><div class="product-card-body"><h3 class="product-name">Cerveza en Lata</h3><p class="product-desc">Aguila light, Club dorada, Poker - 330ML</p><div class="product-footer"><span class="product-price">$4.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+    </div>
+</section>
+</main>
+
+<!-- PRODUCT MODAL -->
+<div class="product-modal" id="productModal">
+    <div class="product-modal-content">
+        <div class="modal-img-section">
+            <img id="modalImage" src="" alt="">
+            <button class="modal-close-btn" id="closeModal"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="modal-body">
             <h2 id="modalTitle"></h2>
-
-            <div class="extras">
-              <h4>Adiciones</h4>
-              <div id="extrasContainer"></div>
+            <div id="extrasContainer"></div>
+            <div class="modal-qty-section">
+                <button id="minusQty"><i class="fa-solid fa-minus"></i></button>
+                <span id="productQty">1</span>
+                <button id="plusQty"><i class="fa-solid fa-plus"></i></button>
             </div>
-
-            <div class="notes">
-              <h4>Observaciones</h4>
-              <textarea
-                id="productNotes"
-                placeholder="ej:Sin cebolla y mas salsa verde"
-              ></textarea>
+            <textarea id="productNotes" class="product-notes" placeholder="Observaciones..."></textarea>
+            <div class="modal-total-section">
+                <span class="modal-total-label">Total:</span>
+                <span class="modal-total-value" id="modalTotal">$0</span>
             </div>
-
-            <div class="quantity">
-              <button id="minusQty">-</button>
-              <span id="productQty">1</span>
-              <button id="plusQty">+</button>
-            </div>
-
-            <h3 class="modal-total">Total: $<span id="modalTotal">0</span></h3>
-          </div>
+            <button class="modal-confirm-btn" id="confirmAdd"><i class="fa-solid fa-bag-shopping"></i> Agregar al pedido</button>
         </div>
-      </div>
     </div>
-    <!-- ================= CARRITO ================= -->
-    <div class="cart-icon" id="cartIcon">🛒 <span id="cartCount">0</span></div>
+</div>
 
-    <div class="cart-panel" id="cartPanel">
-      <h3>Tu Pedido</h3>
-
-      <div id="cartItems"></div>
-
-      <h4>Total: $<span id="cartTotal">0</span></h4>
-
-      <hr />
-
-      <h3>Datos del Cliente</h3>
-
-      <input type="text" id="clientName" placeholder="Nombre" />
-      <input type="text" id="clientLastName" placeholder="Apellido" />
-      <input
-        type="tel"
-        maxlength="10"
-        id="clientPhone"
-        placeholder="Teléfono"
-      />
-      <input type="email" id="clientEmail" placeholder="Correo electrónico" />
-      <input type="text" id="clientAddress" placeholder="Dirección" />
-      <div class="form-group">
-        <label for="barrio">Barrio</label>
-        <select id="barrio" required>
-          <option value="">Selecciona tu barrio</option>
-          <option value="Los alcazares">Los alcazares</option>
-          <option value="Fonaviemcali">Fonaviemcali</option>
-          <option value="San luis 2">San luis 2</option>
-          <option value="San luis 2 - Ciudad de cali">
-            San luis 2 - Ciudad de cali
-          </option>
-          <option value="Sa Luis 1">San Luis 1</option>
-          <option value="Metropolitano del norte">
-            Metropolitano del norte
-          </option>
-          <option value="Villa del sol">Villa del sol</option>
-          <option value="Plazas verde">Plazas verde</option>
-          <option value="Paso del comercio">Paso del comercio</option>
-          <option value="Oasis de comfandi">Oasis de comfandi</option>
-          <option value="Comfenalco">Comfenalco</option>
-          <option value="Guaduales">Guaduales</option>
-          <option value="Calimio">Calimio norte</option>
-          <option value="Flora industrial">Flora industrial</option>
-          <option value="Floralia">Floralia</option>
-          <option value="Chiminangos">Chiminangos</option>
-          <option value="La rivera">La rivera</option>
-          <option value="Torres de comfandi">Torres de comfandi</option>
-          <option value="Los andes">Los andes</option>
-          <option value="Los alamos">Los alamos</option>
-          <option value="Guayacanes">Guayacanes</option>
-          <option value="Brisa de los alamos">Brisa de los alamos</option>
-          <option value="Barranquilla">Barranquilla</option>
-          <option value="Brisas del guavito">Brisas del guavito</option>
-          <option value="Tejares de salomia">Tejares de salomia</option>
-          <option value="Quintas de salomia">Quintas de salomia</option>
-          <option value="Petecuy">Petecuy</option>
-          <option value="Salomia">Salomia</option>
-          <option value="El saman">El saman</option>
-          <option value="La mercerd">La merced</option>
-          <option value="Los almendros">Los almendros</option>
-          <option value="Villa de veracruz">Villa de veracruz</option>
-          <option value="La flora">La flora</option>
-          <option value="Vipasa">Vipasa</option>
-          <option value="prados del norte">prados del norte</option>
-          <option value="Villa del prado">Villa del prado</option>
-          <option value="Santa barbara">Santa barbara</option>
-          <option value="La dolores">La dolores</option>
-          <option value="Cauca seco">Cauca seco</option>
-          <option value="Cali bella">Cali bella</option>
-          <option value="Alfonso lopez">Alfonso lopez</option>
-          <option value="Versalles">Versalles</option>
-          <option value="Menga">Menga</option>
-          <option value="Altos de menga">Altos de menga</option>
-        </select>
-
-        <label for="paymentMethod">Medio de pago</label>
-        <select id="paymentMethodFinal">
-          <option value="">Selecciona método</option>
-          <option value="Efectivo">Efectivo</option>
-          <option value="Transferencia">Transferencia</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <p>Domicilio: $<span id="costo-domicilio">0</span></p>
-      </div>
-
-      <label style="margin-top: 8px; display: block">
-        <input type="checkbox" id="needInvoice" />
-        Necesito facturación electrónica
-      </label>
-
-      <textarea
-        id="invoiceDetails"
-        placeholder="Si es a nombre propio, especifica tipo y numero de documento"
-        style="display: none"
-      ></textarea>
-
-      <label id="invoiceDetails">
-        <input type="checkbox" id="acceptPrivacy" required />
-          Acepto la <a class="invoiceDetailsA" href="html/politica.html" target="_blank">Política de Privacidad</a> 
-           y el Tratamiento de Datos Personales.
-        </label>
-      <button id="sendWhatsApp">Enviar pedido</button>
+<!-- CART SIDEBAR -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<aside class="cart-sidebar" id="cartPanel">
+    <div class="cart-header">
+        <h3><i class="fa-solid fa-bag-shopping"></i> Tu Pedido</h3>
+        <button class="cart-close" id="cartClose"><i class="fa-solid fa-xmark"></i></button>
     </div>
-    <img src="img/MENSAJERO.png" id="runner" class="runner" />
-    <script src="js/modal.js"></script>
-    <script>
-      const sections = document.querySelectorAll("section");
-const navItems = document.querySelectorAll(".categories li");
+    <div class="cart-items" id="cartItems">
+        <div class="cart-empty"><i class="fa-solid fa-bag-shopping"></i><p>Tu carrito esta vacio</p></div>
+    </div>
+    <div class="cart-form" id="cartFormArea">
+        <h4>Datos del Cliente</h4>
+        <div class="form-row"><div class="form-group"><input type="text" id="clientName" placeholder="Nombre"></div><div class="form-group"><input type="text" id="clientLastName" placeholder="Apellido"></div></div>
+        <div class="form-group"><input type="tel" id="clientPhone" placeholder="Telefono"></div>
+        <div class="form-group"><input type="email" id="clientEmail" placeholder="Correo electronico"></div>
+        <div class="form-group"><input type="text" id="clientAddress" placeholder="Direccion"></div>
+        <div class="form-group">
+            <select id="barrio">
+                <option value="">Selecciona tu barrio</option>
+                <option>Los alcazares</option><option>Fonaviemcali</option><option>San luis 2</option><option>San luis 2 - Ciudad de cali</option><option>San Luis 1</option><option>Metropolitano del norte</option><option>Villa del sol</option><option>Paso del comercio</option><option>Oasis de comfandi</option><option>Comfenalco</option><option>Plazas verde</option><option>Los andes</option><option>Guaduales</option><option>Calimio</option><option>Flora industrial</option><option>Floralia</option><option>Chiminangos</option><option>La rivera</option><option>Los alamos</option><option>Guayacanes</option><option>Brisa de los alamos</option><option>Barranquilla</option><option>Torres de comfandi</option><option>Brisas del guavito</option><option>Tejares de salomia</option><option>Quintas de salomia</option><option>Petecuy</option><option>Salomia</option><option>El saman</option><option>La merced</option><option>Los almendros</option><option>Villa de veracruz</option><option>La flora</option><option>Vipasa</option><option>Prados del norte</option><option>Villa del prado</option><option>Santa barbara</option><option>La dolores</option><option>Cauca seco</option><option>Cali bella</option><option>Alfonso lopez</option><option>Versalles</option><option>Menga</option><option>Altos de menga</option>
+            </select>
+        </div>
+        <div class="domicilio-line"><span>Domicilio:</span><span class="domicilio-cost">$<span id="costo-domicilio">0</span></span></div>
+        <div class="form-group">
+            <select id="paymentMethodFinal">
+                <option value="">Selecciona metodo de pago</option>
+                <option>Efectivo</option><option>Transferencia</option>
+            </select>
+        </div>
+        <div class="checkbox-group"><input type="checkbox" id="needInvoice"><label for="needInvoice">Necesito facturacion electronica</label></div>
+        <div class="form-group" id="invoiceDetails" style="display:none"><textarea placeholder="Datos de facturacion (NIT, razon social...)" style="width:100%;padding:9px 14px;background:rgba(255,255,255,0.05);border:1px solid var(--border-subtle);border-radius:8px;color:var(--text-light);font-family:'Poppins',sans-serif;font-size:0.82rem;height:60px;resize:none"></textarea></div>
+        <div class="checkbox-group"><input type="checkbox" id="acceptPrivacy"><label for="acceptPrivacy">Acepto la Politica de Privacidad y el Tratamiento de Datos Personales.</label></div>
+    </div>
+    <div class="cart-total"><span>Total:</span><span id="cartTotal">$0</span></div>
+    <button id="sendWhatsApp"><i class="fa-brands fa-whatsapp"></i> Enviar pedido por WhatsApp</button>
+</aside>
 
-window.addEventListener("scroll", () => {
-  let current = "";
+<!-- FLOATING CART (MOBILE) -->
+<button class="floating-cart" id="floatingCart" style="display:none"><i class="fa-solid fa-bag-shopping"></i><span class="cart-badge" id="floatingCartCount">0</span></button>
 
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop - 150;
-    const sectionHeight = section.offsetHeight;
+<!-- WELCOME MODAL -->
+<div class="welcome-modal" id="welcomeModal">
+    <div class="welcome-content">
+        <div class="welcome-icon">&#128293;</div>
+        <h2>Bienvenido a Chicho's Asados</h2>
+        <p>Gracias por preferirnos. Ahora puedes hacer tu pedido de manera rapida y sencilla desde nuestro menu digital.</p>
+        <button class="welcome-btn" id="welcomeClose">Comenzar pedido</button>
+    </div>
+</div>
 
-    if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-      current = section.getAttribute("id");
+<!-- TOAST -->
+<div class="toast" id="toast"><i class="fa-solid fa-check-circle"></i><span id="toastText">Producto agregado</span></div>
+
+<!-- RUNNER -->
+<div id="runner">&#127839;</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-brand"><h3>Chicho's Asados</h3><p>Sabores autenticos a la parrilla. Cada plato preparado con pasion y los mejores ingredientes.</p></div>
+        <div class="footer-col"><h4>Menu</h4><ul><li><a href="#Salchipapas">Salchipapas</a></li><li><a href="#Hamburguesas">Hamburguesas</a></li><li><a href="#Asados">Asados</a></li><li><a href="#Combos">Combos</a></li><li><a href="#Perros">Perros</a></li><li><a href="#Bebidas">Bebidas</a></li></ul></div>
+        <div class="footer-col"><h4>Informacion</h4><ul><li><a href="#"><i class="fa-solid fa-map-pin" style="margin-right:6px"></i>Los Alcazares</a></li><li><a href="#"><i class="fa-solid fa-clock" style="margin-right:6px"></i>Entrega 30-40 min</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>&copy; 2026 Chicho's Asados. Todos los derechos reservados.</span><div class="footer-social"><a href="#"><i class="fa-brands fa-instagram"></i></a><a href="#"><i class="fa-brands fa-whatsapp"></i></a><a href="#"><i class="fa-brands fa-facebook"></i></a></div></div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+const cart = [];
+let domicilioActual = 0;
+
+/* ================= DOM ================= */
+
+const barrioSelect = document.getElementById("barrio");
+const costoDomicilioSpan = document.getElementById("costo-domicilio");
+const totalElement = document.getElementById("total");
+
+/* ================= TARIFAS ================= */
+
+const tarifasDomicilio = {
+  Fonaviemcali: 2000,
+  "Los alcazares": 2000,
+  "San luis 2": 2000,
+  "San luis 2 - Ciudad de cali": 3000,
+  "Sa Luis 1": 3000,
+  "Metropolitano del norte": 3000,
+  "Villa del sol": 3000,
+  "Paso del comercio": 3000,
+  "Oasis de comfandi": 3000,
+  Comfenalco: 3000,
+  "Plazas verde": 3000,
+  "Los andes": 4000,
+  Guaduales: 4000,
+  Calimio: 4000,
+  "Flora industrial": 4000,
+  Floralia: 4000,
+  Chiminangos: 4000,
+  "La rivera": 4000,
+  "Los alamos": 4000,
+  Guayacanes: 4000,
+  "Brisa de los alamos": 5000,
+  Barranquilla: 5000,
+  "Torres de comfandi": 4000,
+  "Brisas del guavito": 5000,
+  "Quintas de salomia": 5000,
+  "Tejares de salomia": 5000,
+  Petecuy: 5000,
+  "El saman": 5000,
+  Salomia: 5000,
+  "La mercerd": 5000,
+  "Los almendros": 5000,
+  "Villa de veracruz": 5000,
+  "La flora": 5000,
+  Vipasa: 5000,
+  "Prados del norte": 5000,
+  "Villa del prado": 5000,
+  "Santa barbara": 5000,
+  "La dolores": 5000,
+  "Cauca seco": 5000,
+  "Cali bella": 6000,
+  "Alfonso lopez": 7000,
+  Versalles: 7000,
+  Menga: 7000,
+  "Altos de menga": 7000,
+};
+const productsData = {
+  /*SALCHIPAPAS*/
+  Maxichichos: {
+    name: "Maxichichos",
+    price: 50000,
+    extras: [
+      { name: "Queso blanco", price: 4000 },
+      { name: "Tocineta", price: 5000 },
+      { name: "Pollo desmechado", price: 5000 },
+      { name: "Chorizo", price: 5000 },
+      { name: "Carne de hamburguesa", price: 5000 },
+      { name: "Cebolla caramelizada", price: 4000 },
+      { name: "Maicitos", price: 4000 },
+      { name: "Maduro", price: 4000 },
+    ],
+  },
+  Megafamiliar: {
+    name: "Mega familiar",
+    price: 30000,
+    extras: [
+      { name: "Queso blanco", price: 4000 },
+      { name: "Tocineta", price: 5000 },
+      { name: "Pollo desmechado", price: 5000 },
+      { name: "Chorizo", price: 5000 },
+      { name: "Carne de hamburguesa", price: 5000 },
+      { name: "Cebolla caramelizada", price: 4000 },
+      { name: "Maicitos", price: 4000 },
+      { name: "Maduro", price: 4000 },
+    ],
+  },
+  Mega: {
+    name: "Mega",
+    price: 25000,
+    extras: [
+      { name: "Queso blanco", price: 4000 },
+      { name: "Tocineta", price: 5000 },
+      { name: "Pollo desmechado", price: 5000 },
+      { name: "Chorizo", price: 5000 },
+      { name: "Carne de hamburguesa", price: 5000 },
+      { name: "Cebolla caramelizada", price: 4000 },
+      { name: "Maicitos", price: 4000 },
+      { name: "Maduro", price: 4000 },
+    ],
+  },
+  Madura: {
+    name: "Madura",
+    price: 22000,
+    extras: [
+      { name: "Queso blanco", price: 4000 },
+      { name: "Tocineta", price: 5000 },
+      { name: "Pollo desmechado", price: 5000 },
+      { name: "Chorizo", price: 5000 },
+      { name: "Carne de hamburguesa", price: 5000 },
+      { name: "Cebolla caramelizada", price: 4000 },
+      { name: "Maicitos", price: 4000 },
+      { name: "Maduro", price: 4000 },
+    ],
+  },
+  Mixta: {
+    name: "Mixta",
+    price: 22000,
+    extras: [
+      { name: "Queso blanco", price: 4000 },
+      { name: "Tocineta", price: 5000 },
+      { name: "Pollo desmechado", price: 5000 },
+      { name: "Chorizo", price: 5000 },
+      { name: "Carne de hamburguesa", price: 5000 },
+      { name: "Cebolla caramelizada", price: 4000 },
+      { name: "Maicitos", price: 4000 },
+      { name: "Maduro", price: 4000 },
+    ],
+  },
+  SalchiBurguer: {
+    name: "Salchi-Burguer",
+    price: 15000,
+    extras: [
+      { name: "Queso blanco", price: 4000 },
+      { name: "Tocineta", price: 5000 },
+      { name: "Pollo desmechado", price: 5000 },
+      { name: "Chorizo", price: 5000 },
+      { name: "Carne de hamburguesa", price: 5000 },
+      { name: "Cebolla caramelizada", price: 4000 },
+      { name: "Maicitos", price: 4000 },
+      { name: "Maduro", price: 4000 },
+    ],
+  },
+  SalchiEspecial: {
+    name: "Salchi-Especial",
+    price: 15000,
+    extras: [
+      { name: "Queso blanco", price: 4000 },
+      { name: "Tocineta", price: 5000 },
+      { name: "Pollo desmechado", price: 5000 },
+      { name: "Chorizo", price: 5000 },
+      { name: "Carne de hamburguesa", price: 5000 },
+      { name: "Cebolla caramelizada", price: 4000 },
+      { name: "Maicitos", price: 4000 },
+      { name: "Maduro", price: 4000 },
+    ],
+  },
+  Gratinada: {
+    name: "Gratinada",
+    price: 12000,
+    extras: [
+      { name: "Queso blanco", price: 4000 },
+      { name: "Tocineta", price: 5000 },
+      { name: "Pollo desmechado", price: 5000 },
+      { name: "Chorizo", price: 5000 },
+      { name: "Carne de hamburguesa", price: 5000 },
+      { name: "Cebolla caramelizada", price: 4000 },
+      { name: "Maicitos", price: 4000 },
+      { name: "Maduro", price: 4000 },
+    ],
+  },
+  SalchiSencilla: {
+    name: "Salchi-Sencilla",
+    price: 9000,
+    extras: [
+      { name: "Queso blanco", price: 4000 },
+      { name: "Tocineta", price: 5000 },
+      { name: "Pollo desmechado", price: 5000 },
+      { name: "Chorizo", price: 5000 },
+      { name: "Carne de hamburguesa", price: 5000 },
+      { name: "Cebolla caramelizada", price: 4000 },
+      { name: "Maicitos", price: 4000 },
+      { name: "Maduro", price: 4000 },
+    ],
+  },
+  SalchiCriolla: {
+    name: "Salchi-Criolla",
+    price: 9000,
+    extras: [
+      { name: "Queso blanco", price: 4000 },
+      { name: "Tocineta", price: 5000 },
+      { name: "Pollo desmechado", price: 5000 },
+      { name: "Chorizo", price: 5000 },
+      { name: "Carne de hamburguesa", price: 5000 },
+      { name: "Cebolla caramelizada", price: 4000 },
+      { name: "Maicitos", price: 4000 },
+      { name: "Maduro", price: 4000 },
+    ],
+  },
+  /*HAMBURGUESAS*/
+  Patrona: {
+    name: "Patrona",
+    price: 26000,
+    extras: [
+      { name: "Queso blanco", price: 4000 },
+      { name: "Tocineta", price: 5000 },
+      { name: "Cebolla caramelizada", price: 4000 },
+      { name: "Carne de hamburuguesa", price: 5000 },
+    ],
+  },
+  Angust: {
+    name: "Angust",
+    price: 20000,
+    extras: [
+      { name: "Queso blanco", price: 4000 },
+      { name: "Tocineta", price: 5000 },
+      { name: "Cebolla caramelizada", price: 4000 },
+      { name: "Carne de hamburuguesa", price: 5000 },
+    ],
+  },
+  Depollo: {
+    name: "Hamburguesa de pollo",
+    price: 17000,
+    extras: [
+      { name: "Queso blanco", price: 4000 },
+      { name: "Tocineta", price: 5000 },
+      { name: "Cebolla caramelizada", price: 4000 },
+      { name: "Carne de hamburuguesa", price: 5000 },
+    ],
+  },
+  HambEspecial: {
+    name: "Hamburguesa especial",
+    price: 20000,
+    extras: [
+      { name: "Queso blanco", price: 4000 },
+      { name: "Tocineta", price: 5000 },
+      { name: "Cebolla caramelizada", price: 4000 },
+      { name: "Carne de hamburuguesa", price: 5000 },
+    ],
+  },
+  HambuSuper: {
+    name: "Hamburguesa super",
+    price: 14000,
+    extras: [
+      { name: "Queso blanco", price: 4000 },
+      { name: "Tocineta", price: 5000 },
+      { name: "Cebolla caramelizada", price: 4000 },
+      { name: "Carne de hamburuguesa", price: 5000 },
+    ],
+  },
+  HambuJunior: {
+    name: "Hamburguesa junior",
+    price: 10000,
+    extras: [
+      { name: "Queso blanco", price: 4000 },
+      { name: "Tocineta", price: 5000 },
+      { name: "Cebolla caramelizada", price: 4000 },
+      { name: "Carne de hamburuguesa", price: 5000 },
+    ],
+  },
+  PicadaBarrilFamiliar: {
+    name: "Picada al barril familiar",
+    price: 60000,
+    diasPermitidos: [4, 5, 6, 0],
+    extras: [{ name: "Coca cola 1.5 Litros", price: 7000 }],
+  },
+  PicadaBarrilDos: {
+    name: "Picada al barril para 2",
+    price: 45000,
+    diasPermitidos: [4, 5, 6, 0],
+    extras: [{ name: "Coca cola 1 Litro", price: 5000 }],
+  },
+  PicadaBarrilPersonal: {
+    name: "Picada al barril personal",
+    price: 32000,
+    diasPermitidos: [4, 5, 6, 0],
+    extras: [{ name: "Coca cola personal 400ml", price: 3500 }],
+  },
+  PicadaTradicionalFamiliar: {
+    name: "Picada tradicional familiar",
+    price: 48000,
+    extras: [{ name: "Coca cola 1.5 Litros", price: 7000 }],
+  },
+  PicadaTradicionalDos: {
+    name: "Picada tradicional para 2",
+    price: 32000,
+    extras: [{ name: "Coca cola 1 Litro", price: 5000 }],
+  },
+  MaduroGratinadoBarril: {
+    name: "Maduro gratinado al barril",
+    price: 12000,
+    diasPermitidos: [4, 5, 6, 0],
+    extras: [{ name: "Coca cola personal 400ml", price: 3500 }],
+  },
+  CostillaSanLuis: {
+    name: "Costilla san luis",
+    price: 30000,
+    diasPermitidos: [4, 5, 6, 0],
+    extras: [{ name: "Coca cola personal 400ml", price: 3500 }],
+  },
+  FileteCerdo: {
+    name: "Filete de cerdo",
+    price: 22000,
+    extras: [
+      { name: "Coca cola personal", price: 3500 },
+      { name: "Botella de agua", price: 2500 },
+    ],
+  },
+  FiletePollo: {
+    name: "Filete de pollo",
+    price: 22000,
+    extras: [
+      { name: "Coca cola personal", price: 3500 },
+      { name: "Botella de agua", price: 2500 },
+    ],
+  },
+  CarneAsada: {
+    name: "Carne asada",
+    price: 22000,
+    extras: [
+      { name: "Coca cola personal", price: 3500 },
+      { name: "Botella de agua", price: 2500 },
+    ],
+  },
+  Chorizo: {
+    name: "Chorizo",
+    price: 7000,
+    extras: [
+      { name: "Coca cola personal", price: 3500 },
+      { name: "Botella de agua", price: 2500 },
+    ],
+  },
+  CostillaBBQ: {
+    name: "Costilla BBQ",
+    price: 20000,
+  },
+  LaDoble: {
+    name: "2x1 Doble",
+    price: 26000,
+    extras: [
+      { name: "Queso blanco", price: 4000 },
+      { name: "Tocineta", price: 5000 },
+      { name: "Cebolla caramelizada", price: 4000 },
+      { name: "Carne de hamburuguesa", price: 5000 },
+      { name: "Porcion de papas a la francesa", price: 7000 },
+      { name: "Coca cola 1 Litro", price: 5000 },
+    ],
+  },
+  LaCallejera: {
+    name: "2x1 Callejeras",
+    price: 22000,
+    extras: [
+      { name: "Queso blanco", price: 4000 },
+      { name: "Tocineta", price: 5000 },
+      { name: "Cebolla caramelizada", price: 4000 },
+      { name: "Carne de hamburuguesa", price: 5000 },
+      { name: "Porcion de papas a la francesa", price: 7000 },
+      { name: "Coca cola 1 Litro", price: 5000 },
+    ],
+  },
+  LaClasica: {
+    name: "2x1 Clasicas",
+    price: 18000,
+    extras: [
+      { name: "Queso blanco", price: 4000 },
+      { name: "Tocineta", price: 5000 },
+      { name: "Cebolla caramelizada", price: 4000 },
+      { name: "Carne de hamburuguesa", price: 5000 },
+      { name: "Porcion de papas a la francesa", price: 7000 },
+      { name: "Coca cola 1 Litro", price: 5000 },
+    ],
+  },
+  Dosx1PerroEspecial: {
+    name: "2x1 Perro especial",
+    price: 20000,
+    extras: [
+      { name: "Queso blanco", price: 4000 },
+      { name: "Tocineta", price: 5000 },
+      { name: "Cebolla caramelizada", price: 4000 },
+      { name: "Porcion de papas a la francesa", price: 7000 },
+      { name: "Coca cola 1 Litro", price: 5000 },
+    ],
+  },
+  Dosx1SuperPerro: {
+    name: "2x1 Super perro",
+    price: 16000,
+    extras: [
+      { name: "Queso blanco", price: 4000 },
+      { name: "Tocineta", price: 5000 },
+      { name: "Cebolla caramelizada", price: 4000 },
+      { name: "Porcion de papas a la francesa", price: 7000 },
+      { name: "Coca cola 1 Litro", price: 5000 },
+    ],
+  },
+  Dosx1PerroSencillo: {
+    name: "2x1 Perro sencillo",
+    price: 15000,
+    extras: [
+      { name: "Queso blanco", price: 4000 },
+      { name: "Tocineta", price: 5000 },
+      { name: "Cebolla caramelizada", price: 4000 },
+      { name: "Porcion de papas a la francesa", price: 7000 },
+      { name: "Coca cola 1 Litro", price: 5000 },
+    ],
+  },
+  ComboDos: {
+    name: "Combo 2",
+    price: 30000,
+    extras: [
+      { name: "Queso blanco", price: 4000 },
+      { name: "Tocineta", price: 5000 },
+      { name: "Cebolla caramelizada", price: 4000 },
+      { name: "Carne de hamburuguesa", price: 5000 },
+    ],
+  },
+  Combo3: {
+    name: "Combo 3",
+    price: 24000,
+    extras: [
+      { name: "Queso blanco", price: 4000 },
+      { name: "Tocineta", price: 5000 },
+      { name: "Cebolla caramelizada", price: 4000 },
+      { name: "Carne de hamburuguesa", price: 5000 },
+    ],
+  },
+  Combo1: {
+    name: "Combo 1",
+    price: 18000,
+    extras: [
+      { name: "Queso blanco", price: 4000 },
+      { name: "Tocineta", price: 5000 },
+      { name: "Cebolla caramelizada", price: 4000 },
+      { name: "Carne de hamburuguesa", price: 5000 },
+    ],
+  },
+  PerroEspecial: {
+    name: "Perro especial",
+    price: 15000,
+    extras: [
+      { name: "Queso blanco", price: 4000 },
+      { name: "Tocineta", price: 5000 },
+      { name: "Cebolla caramelizada", price: 4000 },
+    ],
+  },
+  SuperPerro: {
+    name: "Super perro",
+    price: 14000,
+    extras: [
+      { name: "Queso blanco", price: 4000 },
+      { name: "Tocineta", price: 5000 },
+      { name: "Cebolla caramelizada", price: 4000 },
+    ],
+  },
+  PerroSencillo: {
+    name: "Perro sencillo",
+    price: 12000,
+    extras: [
+      { name: "Queso blanco", price: 4000 },
+      { name: "Tocineta", price: 5000 },
+      { name: "Cebolla caramelizada", price: 4000 },
+    ],
+  },
+  PapasFrancesa: {
+    name: "Porcion de papas a la francesa",
+    price: 10000,
+    extras: [
+      { name: "Queso blanco", price: 4000 },
+      { name: "Tocineta", price: 5000 },
+      { name: "Pollo desmechado", price: 5000 },
+      { name: "Chorizo", price: 5000 },
+      { name: "Carne de hamburguesa", price: 5000 },
+      { name: "Cebolla caramelizada", price: 4000 },
+      { name: "Maicitos", price: 4000 },
+      { name: "Maduro", price: 4000 },
+    ],
+  },
+  PapasCriolla: {
+    name: "Porcion de papas amarilla",
+    price: 10000,
+    extras: [
+      { name: "Queso blanco", price: 4000 },
+      { name: "Tocineta", price: 5000 },
+      { name: "Pollo desmechado", price: 5000 },
+      { name: "Chorizo", price: 5000 },
+      { name: "Carne de hamburguesa", price: 5000 },
+      { name: "Cebolla caramelizada", price: 4000 },
+      { name: "Maicitos", price: 4000 },
+      { name: "Maduro", price: 4000 },
+    ],
+  },
+  JugosNaturales: {
+    name: "Jugos Frappé",
+    price: 8000,
+    sabores: [
+      { name: "Mango", price: 0 },
+      { name: "Mora", price: 0 },
+      { name: "Lulo", price: 0 },
+      { name: "Fresa", price: 0 },
+      { name: "Maracuya", price: 0 },
+    ],
+  },
+  JugosLeche: {
+    name: "Jugos en leche",
+    price: 9000,
+    sabores: [
+      { name: "Mango", price: 0 },
+      { name: "Mora", price: 0 },
+      { name: "Lulo", price: 0 },
+      { name: "Fresa", price: 0 },
+      { name: "Maracuya", price: 0 },
+    ],
+  },
+  Limonadas: {
+    name: "Limonadas",
+    price: 0,
+    sabores: [
+      { name: "Natural", price: 7000 },
+      { name: "Cerezada", price: 7000 },
+      { name: "Fresa", price: 7000 },
+      { name: "De coco", price: 9000 },
+      { name: "Hierba buena", price: 9000 },
+    ],
+  },
+  CocaPersonal: {
+    name: "Coca cola personal",
+    price: 4000,
+  },
+  QuatroPersonal: {
+    name: "Quatro personal",
+    price: 3500,
+  },
+  CocaCola1L: {
+    name: "Coca cola 1 Litro",
+    price: 5000,
+  },
+  CocaCola15L: {
+    name: "Coca cola 1.5 Litro",
+    price: 7000,
+  },
+  Quatro15L: {
+    name: "Quatro 1.5 Litro",
+    price: 7000,
+  },
+  EconolitroPostobon: {
+    name: "Econolitro postobon",
+    price: 5000,
+    sabores: [
+      { name: "Manzana", price: 0 },
+      { name: "Uva", price: 0 },
+      { name: "Pepsi", price: 0 },
+      { name: "Colombia", price: 0 },
+    ],
+  },
+  HitPersonal: {
+    name: "Hit personal",
+    price: 3500,
+    sabores: [
+      { name: "Mango", price: 0 },
+      { name: "Mora", price: 0 },
+      { name: "Tropical", price: 0 },
+    ],
+  },
+  BotellaAgua: {
+    name: "Botella de agua",
+    price: 2500,
+  },
+  Cerveza: {
+    name: "cerveza en lata",
+    price: 4000,
+    sabores: [
+      { name: "Aguila light", price: 0 },
+      { name: "Club dorada", price: 0 },
+      { name: "Poker", price: 0 },
+    ],
+  },
+};
+
+//horario de apertura
+// ===============================
+// CONFIGURACIÓN
+// ===============================
+const CONFIG = {
+  timezone: "America/Bogota",
+  diasPermitidos: [0, 1, 3, 4, 5, 6], // Dom, Lun, Mié, Jue, Vie, Sáb
+  horaApertura: 17, // 5:00 PM
+  minutoApertura: 0,
+  horaCierre: 23,
+  minutoCierre: 30,
+};
+
+// ===============================
+// UTILIDADES
+// ===============================
+function obtenerFechaCali() {
+  const ahora = new Date();
+  return new Date(ahora.toLocaleString("en-US", { timeZone: CONFIG.timezone }));
+}
+
+function convertirAMinutos(fecha) {
+  return fecha.getHours() * 60 + fecha.getMinutes();
+}
+
+// ===============================
+// ESTADO DEL NEGOCIO
+// ===============================
+function obtenerEstadoNegocio() {
+  const ahora = obtenerFechaCali();
+  const dia = ahora.getDay();
+  const minutosActuales = convertirAMinutos(ahora);
+
+  const aperturaMin = CONFIG.horaApertura * 60 + CONFIG.minutoApertura;
+  const cierreMin = CONFIG.horaCierre * 60 + CONFIG.minutoCierre;
+
+  const abiertoHoy = CONFIG.diasPermitidos.includes(dia);
+  const dentroHorario =
+    minutosActuales >= aperturaMin && minutosActuales <= cierreMin;
+
+  return {
+    abierto: abiertoHoy && dentroHorario,
+    ahora,
+  };
+}
+
+function calcularTiempoRestante() {
+  const ahora = obtenerFechaCali();
+  const proximaApertura = new Date(ahora);
+
+  proximaApertura.setHours(CONFIG.horaApertura, CONFIG.minutoApertura, 0, 0);
+
+  if (ahora >= proximaApertura) {
+    proximaApertura.setDate(proximaApertura.getDate() + 1);
+  }
+
+  const diferencia = proximaApertura - ahora;
+
+  const horas = Math.floor(diferencia / (1000 * 60 * 60));
+  const minutos = Math.floor((diferencia / (1000 * 60)) % 60);
+
+  return `${horas}h ${minutos}m`;
+}
+
+// ===============================
+// UI - ESTADO MINIMALISTA
+// ===============================
+function actualizarEstadoUI() {
+  const estado = obtenerEstadoNegocio();
+  const indicador = document.getElementById("estadoNegocio");
+  const contador = document.getElementById("contadorApertura");
+  const boton = document.getElementById("sendWhatsApp");
+
+  if (estado.abierto) {
+    indicador.textContent = "🟢 Abierto";
+    indicador.classList.remove("cerrado");
+    indicador.classList.add("abierto");
+
+    contador.textContent = "";
+    boton.disabled = false;
+    boton.style.opacity = "1";
+  } else {
+    indicador.textContent = "🔴 Cerrado";
+    indicador.classList.remove("abierto");
+    indicador.classList.add("cerrado");
+
+    contador.textContent = `Abrimos en ${calcularTiempoRestante()}`;
+    boton.disabled = true;
+    boton.style.opacity = "0.5";
+  }
+}
+
+// ===============================
+// FILTRO POR DÍA
+// ===============================
+function filtrarProductosPorDia() {
+  const hoy = obtenerFechaCali().getDay();
+
+  document.querySelectorAll(".product-card").forEach((card) => {
+    const productId = card.dataset.id;
+    const producto = productsData[productId];
+
+    if (producto?.diasPermitidos && !producto.diasPermitidos.includes(hoy)) {
+      card.style.display = "none";
+    } else {
+      card.style.display = "flex"; // importante si tu card usa flex
     }
   });
+}
 
-  navItems.forEach(li => {
-    li.classList.remove("active");
+// ===============================
+// INICIALIZACIÓN
+// ===============================
+function iniciarSistema() {
+  actualizarEstadoUI();
+  filtrarProductosPorDia();
+  setInterval(actualizarEstadoUI, 60000);
+}
 
-    const parentLink = li.closest("a");
-    if (parentLink && parentLink.getAttribute("href") === `#${current}`) {
-      li.classList.add("active");
+document.addEventListener("DOMContentLoaded", iniciarSistema);
+/* ================= CAMBIO DE BARRIO ================= */
+
+barrioSelect.addEventListener("change", function () {
+  const barrio = this.value;
+  domicilioActual = tarifasDomicilio[barrio] || 0;
+
+  costoDomicilioSpan.textContent = domicilioActual.toLocaleString();
+  updateCartUI();
+});
+
+/* ================= MODAL ================= */
+const modalImage = document.getElementById("modalImage");
+const modal = document.getElementById("productModal");
+const modalTitle = document.getElementById("modalTitle");
+const extrasContainer = document.getElementById("extrasContainer");
+const productQty = document.getElementById("productQty");
+const modalTotal = document.getElementById("modalTotal");
+
+let currentProduct = null;
+let quantity = 1;
+
+/* ================= ABRIR MODAL ================= */
+
+document.querySelectorAll(".add-btn").forEach((button) => {
+  button.addEventListener("click", function () {
+    const card = this.closest(".product-card");
+    const productId = card.dataset.id;
+
+    currentProduct = productsData[productId];
+
+    // 🔥 Reset precio dinámico
+    currentProduct.precioSabor = null;
+
+    modalTitle.textContent = currentProduct.name;
+
+    const productImage = card.querySelector(".product-img").src;
+    modalImage.src = productImage;
+    modalImage.alt = currentProduct.name;
+
+    extrasContainer.innerHTML = "";
+
+    /* ================= EXTRAS ================= */
+
+    if (currentProduct.extras && currentProduct.extras.length > 0) {
+      currentProduct.extras.forEach((extra) => {
+        extrasContainer.innerHTML += `
+          <div class="extra-item">
+            <div class="extra-info">
+              <span>${extra.name}</span>
+              <span>$${extra.price.toLocaleString()}</span>
+            </div>
+
+            <div class="extra-qty-controls">
+              <button type="button" onclick="changeExtraQty(this, -1)">-</button>
+              <span class="extra-qty">0</span>
+              <button type="button" onclick="changeExtraQty(this, 1)">+</button>
+            </div>
+
+            <input type="hidden"
+                   class="extra-data"
+                   data-name="${extra.name}"
+                   data-price="${extra.price}"
+                   value="0">
+          </div>
+        `;
+      });
     }
+
+    /* ================= SABORES (BOTONES) ================= */
+
+    if (currentProduct.sabores && currentProduct.sabores.length > 0) {
+      extrasContainer.innerHTML += `
+    <div class="extra-item">
+      <div class="extra-info">
+        <strong>Selecciona el sabor:</strong>
+      </div>
+
+      <div class="sabores-container">
+        ${currentProduct.sabores
+          .map(
+            (s) => `
+            <button 
+              type="button"
+              class="sabor-btn"
+              data-name="${s.name}"
+              data-price="${s.price}">
+              ${s.name} ${
+                s.price > 0 ? "($" + s.price.toLocaleString() + ")" : ""
+              }
+            </button>
+          `,
+          )
+          .join("")}
+      </div>
+    </div>
+  `;
+    }
+
+    /* ================= RESET CANTIDAD ================= */
+
+    quantity = 1;
+    productQty.textContent = quantity;
+
+    /* ================= ACTUALIZAR TOTAL ================= */
+
+    updateTotal();
+
+    /* ================= MOSTRAR MODAL ================= */
+
+    modal.classList.add("active");
   });
 });
-    </script>
-    <script>
-      const categoriesBar = document.querySelector(".categories-bar");
+/* ================= SELECCIÓN DE SABOR ================= */
 
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 150) {
-    categoriesBar.classList.add("sticky-active");
-  } else {
-    categoriesBar.classList.remove("sticky-active");
+document.addEventListener("click", function (e) {
+  if (e.target.classList.contains("sabor-btn")) {
+    // Quitar selección anterior
+    document
+      .querySelectorAll(".sabor-btn")
+      .forEach((btn) => btn.classList.remove("active"));
+
+    // Activar el seleccionado
+    e.target.classList.add("active");
+
+    // Guardar precio dinámico
+    const precio = parseInt(e.target.dataset.price || 0);
+    currentProduct.precioSabor = precio;
+
+    updateTotal();
   }
 });
-    </script>
-    <script>
-      const categories = document.querySelectorAll(".categories li");
-const categoriesContainer = document.querySelector(".categories-bar");
+function changeExtraQty(button, change) {
+  const container = button.closest(".extra-item");
+  const qtySpan = container.querySelector(".extra-qty");
+  const hiddenInput = container.querySelector(".extra-data");
 
-categories.forEach(category => {
-  category.addEventListener("click", () => {
+  let qty = parseInt(qtySpan.textContent);
+  qty += change;
 
-    // Quitar active anterior
-    document.querySelector(".categories li.active")?.classList.remove("active");
+  // Límite mínimo y máximo
+  if (qty < 0) qty = 0;
+  if (qty > 5) qty = 5;
 
-    // Activar el actual
-    category.classList.add("active");
+  qtySpan.textContent = qty;
+  hiddenInput.value = qty;
 
-    // Centrarse suavemente
-    const containerWidth = categoriesContainer.offsetWidth;
-    const categoryWidth = category.offsetWidth;
-    const categoryLeft = category.offsetLeft;
+  // Animación
+  qtySpan.classList.add("qty-bounce");
+  setTimeout(() => {
+    qtySpan.classList.remove("qty-bounce");
+  }, 200);
 
-    const scrollTo =
-      categoryLeft - (containerWidth / 2) + (categoryWidth / 2);
+  updateTotal();
+}
 
-    categoriesContainer.scrollTo({
-      left: scrollTo,
-      behavior: "smooth"
+/* ================= CANTIDAD ================= */
+
+document.getElementById("plusQty").onclick = () => {
+  quantity++;
+  productQty.textContent = quantity;
+  updateTotal();
+};
+
+document.getElementById("minusQty").onclick = () => {
+  if (quantity > 1) quantity--;
+  productQty.textContent = quantity;
+  updateTotal();
+};
+
+/* ================= TOTAL MODAL ================= */
+function updateTotal() {
+  let extrasTotal = 0;
+
+  document.querySelectorAll(".extra-data").forEach((input) => {
+    const qty = parseInt(input.value);
+    const price = parseInt(input.dataset.price);
+    extrasTotal += qty * price;
+  });
+
+  const ajusteSabor = currentProduct.precioSabor || 0;
+
+  const total = (currentProduct.price + ajusteSabor + extrasTotal) * quantity;
+
+  modalTotal.textContent = total.toLocaleString();
+}
+
+/* ================= CONFIRMAR PRODUCTO ================= */
+
+document.getElementById("confirmAdd").onclick = () => {
+  let extrasList = [];
+
+  document.querySelectorAll(".extra-data").forEach((extra) => {
+    const qty = parseInt(extra.value);
+
+    if (qty > 0) {
+      extrasList.push(`${qty}x ${extra.dataset.name}`);
+    }
+  });
+
+  const notes = document.getElementById("productNotes").value;
+
+  let saborElegido = "";
+
+  if (currentProduct.sabores) {
+    const saborActivo = document.querySelector(".sabor-btn.active");
+
+    if (!saborActivo) {
+      Swal.fire({
+        icon: "warning",
+        title: "Selecciona un sabor",
+        confirmButtonColor: "#ff6600",
+      });
+      return;
+    }
+
+    saborElegido = saborActivo.dataset.name;
+  }
+
+  function calcularTotalNumerico() {
+    let extrasTotal = 0;
+
+    document.querySelectorAll(".extra-data").forEach((input) => {
+      const qty = parseInt(input.value);
+      const price = parseInt(input.dataset.price);
+      extrasTotal += qty * price;
     });
 
-  });
-});
-    </script>
-    <script>
-      // Mostrar solo la primera vez
-document.addEventListener("DOMContentLoaded", function () {
-  const modal = document.getElementById("welcomeModal");
-  const closeBtn = document.getElementById("closeWelcome");
+    const ajusteSabor = currentProduct.precioSabor || 0;
 
-  if (!localStorage.getItem("welcomeShown")) {
-    modal.style.display = "flex";
-  } else {
-    modal.style.display = "none";
+    return (currentProduct.price + ajusteSabor + extrasTotal) * quantity;
   }
 
-  closeBtn.addEventListener("click", function () {
-    modal.style.display = "none";
-    localStorage.setItem("welcomeShown", "true");
+  const totalNumerico = calcularTotalNumerico();
+
+  cart.push({
+    name: currentProduct.name + (saborElegido ? ` (${saborElegido})` : ""),
+    quantity,
+    extras: extrasList,
+    notes,
+    price: totalNumerico,
   });
-});
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <footer class="main-footer">
-      <div class="footer-container">
-        <div class="footer-brand">
-          <h3>Chichos Asados y Comidas Rapidas</h3>
-           <div class="footer-social">
-            <a href="https://www.instagram.com/chichos_asadosycomidas_rapidas/" target="_blank">
-              <i class="fab fa-instagram"></i>
-            </a>
-            <a href="https://www.facebook.com/share/1BG8khexFz/?mibextid=wwXIfr" target="_blank">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="https://wa.me/573187217532" target="_blank">
-              <i class="fab fa-whatsapp"></i>
-            </a>
-            <a href="https://www.tiktok.com/@chichos_comidasrapidas?_r=1&_t=ZS-94HUrGRdaqr" target="_blank">
-              <i class="fa-brands fa-tiktok"></i>
-            </a>
-          </div>
-          <p>Menú digital interactivo</p>
-        </div>
+  updateCartUI();
+  closeModal();
+};
 
-        <div class="footer-dev">
-          <p>
-            Diseñado y desarrollado por
-            <a href="https://dannybytedev.github.io/PortfolioDannyByte/" target="_blank"> Danny Byte </a>
-          </p>
-          <p class="footer-cta">
-            ¿Quieres un menú digital como este?
-            <a href="https://dannybytedev.github.io/PortfolioDannyByte/" target="_blank">
-              Haz clic aquí
-            </a>
-          </p>
-        </div>
+function closeModal() {
+  modal.classList.remove("active");
+  document.body.style.overflow = "auto";
+  document.getElementById("productNotes").value = "";
+}
 
-        <div class="footer-copy">
-          <p>© 2026</span> Todos los derechos reservados</p>
-        </div>
+document.getElementById("closeModal").onclick = closeModal;
+
+/* ================= CARRITO ================= */
+
+const cartIcon = document.getElementById("cartIcon");
+const cartItems = document.getElementById("cartItems");
+const cartTotal = document.getElementById("cartTotal");
+const cartCount = document.getElementById("cartCount");
+
+function updateCartUI() {
+  cartItems.innerHTML = "";
+  let total = 0;
+
+  cart.forEach((item, index) => {
+    total += item.price;
+
+    cartItems.innerHTML += `
+      <div style="margin-bottom:10px;border-bottom:1px solid #eee;padding-bottom:6px">
+        <strong>${item.quantity}x ${item.name}</strong><br>
+        ${item.extras.length ? "Extras: " + item.extras.join(", ") + "<br>" : ""}
+        ${item.notes ? "Obs: " + item.notes + "<br>" : ""}
+        $${item.price.toLocaleString()}<br>
+        <button onclick="removeItem(${index})"
+          style="background:#ff4d00;color:white;border:none;padding:4px 8px;border-radius:6px;margin-top:4px;cursor:pointer;">
+          Eliminar
+        </button>
       </div>
-    </footer>
-<div id="welcomeModal" class="welcome-overlay">
-  <div class="welcome-box">
-    <img src="img/Mascota.png" alt="Mascota Chicho's" class="welcome-mascot" />
+    `;
+  });
 
-    <h2>¡Bienvenido a Chicho’s Asados y comidas rapidas! 🔥</h2>
+  const totalFinal = total + domicilioActual;
 
-    <p>
-      Gracias por preferirnos 💛  
-      Ahora puedes hacer tu pedido de manera rápida y sencilla desde nuestro menú digital.
-    </p>
+  cartTotal.textContent = totalFinal.toLocaleString();
+  cartCount.textContent = cart.length;
+}
 
-    <p class="small-text">
-      Selecciona tus productos favoritos, completa tus datos y recibe tu pedido en casa.
-    </p>
+function removeItem(index) {
+  cart.splice(index, 1);
+  updateCartUI();
+}
 
-    <button id="closeWelcome">Comenzar pedido</button>
-  </div>
-</div>
-  </body>
+/* ================= FACTURACIÓN ================= */
+
+const needInvoice = document.getElementById("needInvoice");
+const invoiceDetails = document.getElementById("invoiceDetails");
+
+needInvoice.addEventListener("change", function () {
+  invoiceDetails.style.display = this.checked ? "block" : "none";
+});
+
+function animarRepartidor() {
+  const runner = document.getElementById("runner");
+
+  runner.classList.add("active");
+
+  setTimeout(() => {
+    runner.classList.remove("active");
+  }, 4000);
+}
+
+/* ================= WHATSAPP FINAL ================= */
+
+document.getElementById("sendWhatsApp").addEventListener("click", function () {
+  if (cart.length === 0) {
+    Swal.fire({
+      icon: "error",
+      title: "Faltan datos",
+      text: "El carrito esta vacio",
+      confirmButtonColor: "#ff6600",
+    });
+    return;
+  }
+
+  const name = document.getElementById("clientName").value.trim();
+  const lastName = document.getElementById("clientLastName").value.trim();
+  const phone = document.getElementById("clientPhone").value.trim();
+  const email = document.getElementById("clientEmail").value.trim();
+  const address = document.getElementById("clientAddress").value.trim();
+  const barrio = barrioSelect.value;
+  const paymentMethodFinal =
+    document.getElementById("paymentMethodFinal").value;
+  const invoiceTextarea = document.querySelector("#invoiceDetails textarea");
+  const invoiceDetailsValue = invoiceTextarea ? invoiceTextarea.value.trim() : "";
+  const privacyAccepted = document.getElementById("acceptPrivacy").checked;
+
+  if (!privacyAccepted) {
+    Swal.fire({
+      icon: "error",
+      title: "Politicas de privacidad",
+      text: "Aceptas las politicas de privacidad para continuar",
+      confirmButtonColor: "#ff6600",
+    });
+    return;
+  }
+  if (!name || !phone || !address || !barrio) {
+    Swal.fire({
+      icon: "error",
+      title: "Faltan datos",
+      text: "Completa nombre, teléfono, dirección y barrio",
+      confirmButtonColor: "#ff6600",
+    });
+    return;
+  }
+
+  if (!paymentMethodFinal) {
+    Swal.fire({
+      icon: "error",
+      title: "Faltan datos",
+      text: "Selecciona un medio de pago",
+      confirmButtonColor: "#ff6600",
+    });
+    return;
+  }
+
+  let message = `Hola, me gustaría hacer el siguiente pedido:\n\n`;
+
+  let total = 0;
+
+  cart.forEach((item) => {
+    message += `${item.quantity}x ${item.name}\n`;
+
+    if (item.extras.length) message += `Extras: ${item.extras.join(", ")}\n`;
+
+    if (item.notes) message += `Obs: ${item.notes}\n`;
+
+    message += `Subtotal: $${item.price.toLocaleString()}\n\n`;
+
+    total += item.price;
+  });
+
+  const totalFinal = total + domicilioActual;
+
+  message += `Barrio: ${barrio}\n`;
+  message += `Domicilio: $${domicilioActual.toLocaleString()}\n`;
+  message += `Método de pago: ${paymentMethodFinal}\n`;
+  message += `TOTAL: $${totalFinal.toLocaleString()}\n\n`;
+
+  message += `----- DATOS DEL CLIENTE -----\n`;
+  message += `Nombre: ${name} ${lastName}\n`;
+  message += `Teléfono: ${phone}\n`;
+  message += `Correo: ${email}\n`;
+  message += `Dirección: ${address}\n`;
+  message += `Facturacion electronica: ${invoiceDetailsValue}`;
+
+  const businessPhone = "573187217532";
+
+  const url = `https://wa.me/${businessPhone}?text=${encodeURIComponent(message)}`;
+
+// Primero abrir WhatsApp (acción directa del click)
+  window.location.href = url;
+
+  // Luego animación ligera (pero sin delay antes del redirect)
+  animarRepartidor();
+
+  // Recargar después de que termine la animación
+  setTimeout(() => {
+    location.reload();
+  }, 4500);
+});
+
+/* ================= ENHANCED UI JS ================= */
+
+// Navbar scroll
+window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Categories scroll spy
+const sections = document.querySelectorAll('.menu-section');
+const navItems = document.querySelectorAll('.categories li');
+window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (scrollY >= s.offsetTop - 200) current = s.getAttribute('id'); });
+    navItems.forEach(li => {
+        li.classList.remove('active');
+        const a = li.closest('a');
+        if (a && a.getAttribute('href') === '#' + current) li.classList.add('active');
+    });
+});
+
+// Category click center
+navItems.forEach(item => {
+    item.addEventListener('click', () => {
+        navItems.forEach(li => li.classList.remove('active'));
+        item.classList.add('active');
+        const bar = document.querySelector('.categories');
+        const scrollTo = item.offsetLeft - (bar.offsetWidth / 2) + (item.offsetWidth / 2);
+        bar.scrollTo({ left: scrollTo, behavior: 'smooth' });
+    });
+});
+
+// Intersection observer for card animations
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+            setTimeout(() => entry.target.classList.add('visible'), i * 80);
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.1 });
+document.querySelectorAll('.product-card').forEach(c => observer.observe(c));
+
+// Cart sidebar toggle
+const cartPanel = document.getElementById('cartPanel');
+const cartOverlay = document.getElementById('cartOverlay');
+function openCart() { cartPanel.classList.add('active'); cartOverlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
+function closeCartUI() { cartPanel.classList.remove('active'); cartOverlay.classList.remove('active'); document.body.style.overflow = ''; }
+// Use enhanced openCart (with overlay + body overflow) instead of simple toggle
+cartIcon.onclick = openCart;
+document.getElementById('cartClose').onclick = closeCartUI;
+cartOverlay.onclick = closeCartUI;
+
+// Floating cart mobile
+const floatingCart = document.getElementById('floatingCart');
+if (window.innerWidth <= 768) floatingCart.style.display = 'flex';
+window.addEventListener('resize', () => { floatingCart.style.display = window.innerWidth <= 768 ? 'flex' : 'none'; });
+floatingCart.onclick = openCart;
+
+// Update floating cart count
+const origUpdateCartUI = window.updateCartUI;
+if (origUpdateCartUI) {
+    const _orig = origUpdateCartUI;
+    window.updateCartUI = function() {
+        _orig();
+        const fc = document.getElementById('floatingCartCount');
+        if (fc) fc.textContent = document.getElementById('cartCount').textContent;
+    };
+}
+
+// Welcome modal
+if (!localStorage.getItem('welcomeShown')) {
+    setTimeout(() => document.getElementById('welcomeModal').classList.add('active'), 800);
+}
+document.getElementById('welcomeClose').onclick = () => {
+    document.getElementById('welcomeModal').classList.remove('active');
+    localStorage.setItem('welcomeShown', 'true');
+};
+
+// Toast notification
+let toastTimeout;
+function showToast(msg) {
+    document.getElementById('toastText').textContent = msg;
+    document.getElementById('toast').classList.add('show');
+    clearTimeout(toastTimeout);
+    toastTimeout = setTimeout(() => document.getElementById('toast').classList.remove('show'), 2500);
+}
+
+// Override closeModal to also reset body overflow
+const _closeModal = closeModal;
+closeModal = function() {
+    _closeModal();
+    document.body.style.overflow = '';
+};
+
+// Add toast when confirming product
+const _confirmAdd = document.getElementById('confirmAdd').onclick;
+document.getElementById('confirmAdd').onclick = function() {
+    // Validate sabor first (same logic as modal.js)
+    if (currentProduct && currentProduct.sabores) {
+        const saborActivo = document.querySelector('.sabor-btn.active');
+        if (!saborActivo) {
+            Swal.fire({ icon: 'warning', title: 'Selecciona un sabor', confirmButtonColor: '#ff6600' });
+            return;
+        }
+    }
+    // Call original
+    _confirmAdd.call(this);
+    showToast('Producto agregado al carrito');
+};
+</script>
+</body>
 </html>
