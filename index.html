@@ -91,6 +91,28 @@ body{
   position:fixed;top:0;left:0;right:0;
   z-index:1001;
   overflow:hidden;
+  transition:all 0.4s ease;
+}
+.top-bar.has-promo{
+  background:linear-gradient(90deg,#7C2D12,#DC2626,#F59E0B,#DC2626,#7C2D12);
+  background-size:200% 100%;
+  animation:promo-gradient 4s linear infinite;
+  font-weight:700;
+  padding:8px 24px;
+}
+@keyframes promo-gradient{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+.top-bar .promo-icon{
+  display:inline-block;
+  animation:promo-bounce 1.2s ease-in-out infinite;
+  margin-right:6px;
+}
+@keyframes promo-bounce{
+  0%,100%{transform:translateY(0) rotate(0)}
+  50%{transform:translateY(-3px) rotate(-8deg)}
 }
 .top-bar::before{
   content:'';
@@ -933,6 +955,48 @@ body{
   margin-top:10px;font-weight:500;
 }
 .domicilio-line .domicilio-cost{color:var(--gold);font-weight:700;font-family:'Plus Jakarta Sans',sans-serif}
+
+/* Discount line in cart */
+.cart-discount-line{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:10px 14px;
+  margin:10px 0;
+  background:linear-gradient(135deg,rgba(34,197,94,0.12),rgba(34,197,94,0.04));
+  border:1px solid rgba(34,197,94,0.3);
+  border-radius:var(--radius-sm);
+  font-size:0.82rem;
+}
+.cart-discount-line .discount-label{
+  color:#86EFAC;font-weight:600;
+  display:flex;align-items:center;gap:7px;
+}
+.cart-discount-line .discount-label i{color:#4ADE80;font-size:0.85rem}
+.cart-discount-line .discount-value{
+  color:#4ADE80;font-weight:800;
+  font-family:'Plus Jakarta Sans',sans-serif;
+}
+.cart-subtotal-line{
+  display:flex;justify-content:space-between;
+  padding:6px 0;font-size:0.82rem;
+  color:var(--text-muted);font-weight:500;
+}
+.cart-subtotal-line .subtotal-value{
+  color:var(--text-light);font-weight:600;
+  font-family:'Plus Jakarta Sans',sans-serif;
+}
+
+/* Promo badge in cart header */
+.cart-promo-badge{
+  display:flex;align-items:center;gap:8px;
+  padding:8px 12px;margin:0 18px 12px;
+  background:linear-gradient(135deg,rgba(245,158,11,0.15),rgba(220,38,38,0.1));
+  border:1px solid rgba(245,158,11,0.35);
+  border-radius:var(--radius-sm);
+  font-size:0.76rem;color:var(--accent-light);
+  font-weight:600;line-height:1.4;
+}
+.cart-promo-badge i{color:var(--accent);font-size:0.9rem;flex-shrink:0;animation:promo-bounce 1.5s ease-in-out infinite}
+
 .cart-total{
   padding:16px 26px;
   border-top:1px solid var(--border-subtle);
@@ -2102,7 +2166,7 @@ div:where(.swal2-container),
 <section id="Asados" class="menu-section">
     <div class="section-header"><div class="section-icon asados"><i class="fa-solid fa-fire"></i></div><h2 class="section-title">Asados <span class="count">7 platos</span></h2><div class="section-line"></div></div>
     <div class="products-grid">
-        <div class="product-card" data-id="PicadaTradicionalFamiliar"><div class="product-card-img"><img src="img/productos/Asados/picadatradicional.webp" alt="Picada Tradicional Familiar" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$48.000</span></div><div class="product-card-body"><h3 class="product-name">Picada Tradicional Familiar</h3><p class="product-desc">Cerdo, Pollo, Costilla BBQ, chorizo, papa a la francesa y papa criolla, tostada de platano y trozos de tomate</p><div class="product-footer"><span class="product-price">$48.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="PicadaTradicionalFamiliar"><div class="product-card-img"><img src="img/productos/Asados/picadatradicional.webp" alt="Picada Tradicional Familiar" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="combo-badge"><i class="fa-solid fa-users"></i> Familiar</span><span class="price-tag">$48.000</span></div><div class="product-card-body"><h3 class="product-name">Picada Tradicional Familiar</h3><p class="product-desc">Cerdo, Pollo, Costilla BBQ, chorizo, papa a la francesa y papa criolla, tostada de platano y trozos de tomate</p><div class="product-footer"><span class="product-price">$48.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
         <div class="product-card" data-id="PicadaTradicionalDos"><div class="product-card-img"><img src="img/productos/Asados/picadatradicional.webp" alt="Picada Tradicional para 2" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$32.000</span></div><div class="product-card-body"><h3 class="product-name">Picada Tradicional para 2</h3><p class="product-desc">Cerdo, Pollo, Costilla BBQ, chorizo, papa a la francesa y papa criolla, tostada de platano y trozos de tomate</p><div class="product-footer"><span class="product-price">$32.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
         <div class="product-card" data-id="FileteCerdo"><div class="product-card-img"><img src="img/productos/Asados/filete de cerdo.webp" alt="Filete de Cerdo" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$22.000</span></div><div class="product-card-body"><h3 class="product-name">Filete de Cerdo</h3><p class="product-desc">200gr de Filete de cerdo acompanado de papas a la francesa y ensalada</p><div class="product-footer"><span class="product-price">$22.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
         <div class="product-card" data-id="FiletePollo"><div class="product-card-img"><img src="img/productos/Asados/filete de pollo.webp" alt="Filete de Pollo" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$22.000</span></div><div class="product-card-body"><h3 class="product-name">Filete de Pollo</h3><p class="product-desc">200gr de Filete de pollo acompanado de papas a la francesa y ensalada</p><div class="product-footer"><span class="product-price">$22.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
@@ -2122,14 +2186,8 @@ div:where(.swal2-container),
         <div class="product-card" data-id="Dosx1PerroEspecial"><div class="product-card-img"><img src="img/productos/combos/2x1perroespecial.webp" alt="2x1 Perro Especial" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="combo-badge"><i class="fa-solid fa-percent"></i> 2x1</span><span class="price-tag">$20.000</span></div><div class="product-card-body"><h3 class="product-name">2x1 Perro Especial</h3><p class="product-desc">Salchicha americana, cebolla caramelizada, queso, tocineta, ripio de papas y salsa de la casa</p><div class="product-footer"><span class="product-price">$20.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
         <div class="product-card" data-id="Dosx1SuperPerro"><div class="product-card-img"><img src="img/productos/combos/2X1Superperro.webp" alt="2x1 Super Perro" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="combo-badge"><i class="fa-solid fa-percent"></i> 2x1</span><span class="price-tag">$16.000</span></div><div class="product-card-body"><h3 class="product-name">2x1 Super Perro</h3><p class="product-desc">Salchicha sencilla, cebolla caramelizada, tocineta, ripio de papas y salsa de la casa</p><div class="product-footer"><span class="product-price">$16.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
         <div class="product-card" data-id="Dosx1PerroSencillo"><div class="product-card-img"><img src="img/productos/combos/2x1PerroSencillo.webp" alt="2x1 Perro Sencillo" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="combo-badge"><i class="fa-solid fa-percent"></i> 2x1</span><span class="price-tag">$15.000</span></div><div class="product-card-body"><h3 class="product-name">2x1 Perro Sencillo</h3><p class="product-desc">Salchicha sencilla, cebolla caramelizada, ripio de papas y salsa de la casa</p><div class="product-footer"><span class="product-price">$15.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
-        <div class="product-card" data-id="LaDoble"><div class="product-card-img"><img src="img/productos/combos/Ladoble.webp" alt="2x1 Doble" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$26.000</span></div><div class="product-card-body"><h3 class="product-name">2x1 Hamburguesas Doble</h3><p class="product-desc">Doble Carne de 120gr, lechuga crespa, tomate, queso, ripio de papas y salsa de la casa</p><div class="product-footer"><span class="product-price">$26.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
-        <div class="product-card" data-id="LaCallejera"><div class="product-card-img"><img src="img/productos/combos/callejera.webp" alt="2x1 Callejeras" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$22.000</span></div><div class="product-card-body"><h3 class="product-name">2x1 Hamburguesas Callejeras</h3><p class="product-desc">Carne de 120gr, jamon, lechuga crespa, tomate, cebolla caramelizada, queso, ripio de papas y salsa de la casa</p><div class="product-footer"><span class="product-price">$22.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
-        <div class="product-card" data-id="LaClasica"><div class="product-card-img"><img src="img/productos/combos/callejera.webp" alt="2x1 Clasicas" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$18.000</span></div><div class="product-card-body"><h3 class="product-name">2x1 Hamburguesas Clasicas</h3><p class="product-desc">Carne de 120gr, lechuga crespa, tomate, queso, ripio de papas y salsa de la casa</p><div class="product-footer"><span class="product-price">$18.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
-        <div class="product-card" data-id="Dosx1PerroEspecial"><div class="product-card-img"><img src="img/productos/combos/2x1perroespecial.webp" alt="2x1 Perro Especial" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$20.000</span></div><div class="product-card-body"><h3 class="product-name">2x1 Perro Especial</h3><p class="product-desc">Salchicha americana, cebolla caramelizada, queso, tocineta, ripio de papas y salsa de la casa</p><div class="product-footer"><span class="product-price">$20.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
-        <div class="product-card" data-id="Dosx1SuperPerro"><div class="product-card-img"><img src="img/productos/combos/2X1Superperro.webp" alt="2x1 Super Perro" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$16.000</span></div><div class="product-card-body"><h3 class="product-name">2x1 Super Perro</h3><p class="product-desc">Salchicha sencilla, cebolla caramelizada, tocineta, ripio de papas y salsa de la casa</p><div class="product-footer"><span class="product-price">$16.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
-        <div class="product-card" data-id="Dosx1PerroSencillo"><div class="product-card-img"><img src="img/productos/combos/2x1PerroSencillo.webp" alt="2x1 Perro Sencillo" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$15.000</span></div><div class="product-card-body"><h3 class="product-name">2x1 Perro Sencillo</h3><p class="product-desc">Salchicha sencilla, cebolla caramelizada, ripio de papas y salsa de la casa</p><div class="product-footer"><span class="product-price">$15.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
         <div class="product-card" data-id="ComboDos"><div class="product-card-img"><img src="img/productos/combos/combo2.webp" alt="Super Combo" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$30.000</span></div><div class="product-card-body"><h3 class="product-name">Super Combo</h3><p class="product-desc">Gaseosa econolitro, 2 Hamburguesas super, Papas a la francesa</p><div class="product-footer"><span class="product-price">$30.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
-        <div class="product-card" data-id="Combo3"><div class="product-card-img"><img src="img/productos/combos/combos1.webp" alt="Combo Angus" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$24.000</span></div><div class="product-card-body"><h3 class="product-name">Combo Angus</h3><p class="product-desc">Gaseosa personal, Hamburguesas Angus, Papas a la francesa</p><div class="product-footer"><span class="product-price">$24.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="Combo3"><div class="product-card-img"><img src="img/productos/combos/combo3.webp" alt="Combo Angus" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$24.000</span></div><div class="product-card-body"><h3 class="product-name">Combo Angus</h3><p class="product-desc">Gaseosa personal, Hamburguesas Angus, Papas a la francesa</p><div class="product-footer"><span class="product-price">$24.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
         <div class="product-card" data-id="Combo1"><div class="product-card-img"><img src="img/productos/combos/combos1.webp" alt="Combo Personal" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$18.000</span></div><div class="product-card-body"><h3 class="product-name">Combo Personal</h3><p class="product-desc">Gaseosa personal, Hamburguesas Super, Papas a la francesa</p><div class="product-footer"><span class="product-price">$18.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
     </div>
 </section>
@@ -2148,8 +2206,8 @@ div:where(.swal2-container),
 <section id="Adiciones" class="menu-section">
     <div class="section-header"><div class="section-icon adiciones"><i class="fa-solid fa-plus"></i></div><h2 class="section-title">Adiciones <span class="count">2 platos</span></h2><div class="section-line"></div></div>
     <div class="products-grid">
-        <div class="product-card" data-id="PapasFrancesa"><div class="product-card-img"><img src="img/productos/adiciones/papas-fancesa.webp" alt="Papas a la Francesa" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$10.000</span></div><div class="product-card-body"><h3 class="product-name">Papas a la Francesa</h3><p class="product-desc">Porcion de papas a la francesa</p><div class="product-footer"><span class="product-price">$10.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
-        <div class="product-card" data-id="PapasCriolla"><div class="product-card-img"><img src="img/productos/adiciones/papas-criollas.webp" alt="Papas Criolla" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$10.000</span></div><div class="product-card-body"><h3 class="product-name">Papas Criolla</h3><p class="product-desc">Porcion de papas amarilla</p><div class="product-footer"><span class="product-price">$10.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="PapasFrancesa"><div class="product-card-img"><img src="img/productos/Adiciones/papas-fancesa.webp" alt="Porcion de papas a la francesa" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$9.000</span></div><div class="product-card-body"><h3 class="product-name">Porcion de papas a la francesa</h3><p class="product-desc">Porcion de papas a la francesa</p><div class="product-footer"><span class="product-price">$9.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
+        <div class="product-card" data-id="PapasCriolla"><div class="product-card-img"><img src="img/productos/Adiciones/papas-criollas.webp" alt="Porcion de papas amarilla" class="product-img" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#2A1D19,#3D2E2A)'"><span class="price-tag">$9.000</span></div><div class="product-card-body"><h3 class="product-name">Porcion de papas amarilla</h3><p class="product-desc">Porcion de papas amarilla</p><div class="product-footer"><span class="product-price">$9.000</span><button class="add-btn"><i class="fa-solid fa-plus"></i> Agregar</button></div></div></div>
     </div>
 </section>
 
@@ -2212,6 +2270,7 @@ div:where(.swal2-container),
         </div>
         <button class="cart-close" id="cartClose" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
     </div>
+    <div class="cart-promo-badge" id="cartPromoBadge" style="display:none"></div>
     <div class="cart-items" id="cartItems">
         <div class="cart-empty"><div class="empty-icon"><i class="fa-solid fa-bag-shopping"></i></div><p>Tu carrito esta vacio</p><span class="empty-hint">Agrega productos del menu para empezar</span></div>
     </div>
@@ -2238,7 +2297,14 @@ div:where(.swal2-container),
             </select>
         </div>
 
-        <div class="domicilio-line"><span>Domicilio:</span><span class="domicilio-cost">$<span id="costo-domicilio">0</span></span></div>
+        <div class="cart-totals-summary" id="cartTotalsSummary" style="display:none">
+            <div class="cart-subtotal-line"><span>Subtotal:</span><span class="subtotal-value" id="cartSubtotal">$0</span></div>
+            <div class="cart-discount-line" id="cartDiscountLine" style="display:none">
+                <span class="discount-label"><i class="fa-solid fa-tag"></i> <span id="cartDiscountLabel">Descuento</span></span>
+                <span class="discount-value" id="cartDiscountValue">-$0</span>
+            </div>
+            <div class="domicilio-line"><span>Domicilio:</span><span class="domicilio-cost">$<span id="costo-domicilio">0</span></span></div>
+        </div>
 
         <div class="form-group">
             <select id="paymentMethodFinal">
@@ -2359,6 +2425,145 @@ div:where(.swal2-container),
 <script>
 const cart = [];
 let domicilioActual = 0;
+
+/* ================= PROMO ENGINE - Descuentos por fecha/eventos ================= */
+
+// Configuración de promociones
+// Cada promo puede tener:
+//   - id: identificador único
+//   - title: título corto (para badges)
+//   - message: mensaje completo (para top-bar y carrito)
+//   - discount: porcentaje de descuento (0-100)
+//   - start: fecha de inicio (YYYY-MM-DD) o null
+//   - end: fecha de fin (YYYY-MM-DD) o null
+//   - daysOfWeek: array de días (0=domingo, 6=sábado) o null para todos
+//   - icon: icono FontAwesome
+//   - gradient: gradient CSS para el top-bar (opcional)
+const PROMOS = [
+  {
+    id: 'seleccion_colombia',
+    title: 'Hoy juega la Sele',
+    message: 'Hoy juega la seleccion! Recuerda nuestro 10% de descuento especial solo por hoy pidiendo por nuestra pagina web',
+    shortMessage: '10% OFF por partido de la Sele Colombia',
+    discount: 10,
+    start: null,
+    end: null,
+    // Días de partidos típicos: martes (2) y miércoles (3) - eliminatorias
+    // También viernes (5) y sábado (6) para partidos amistosos
+    daysOfWeek: [2, 3, 5, 6],
+    icon: 'fa-futbol',
+    gradient: 'linear-gradient(90deg,#FCD34D,#F59E0B,#DC2626,#F59E0B,#FCD34D)'
+  },
+  {
+    id: 'miercoles_descuento',
+    title: 'Miercoles de Descuento',
+    message: 'Miercoles de descuento especial! 10% OFF en todo tu pedido solo por nuestra pagina web',
+    shortMessage: '10% OFF - Miercoles de descuento',
+    discount: 10,
+    start: null,
+    end: null,
+    daysOfWeek: [3],
+    icon: 'fa-percent',
+    gradient: 'linear-gradient(90deg,#7C2D12,#DC2626,#F59E0B,#DC2626,#7C2D12)'
+  },
+  {
+    id: 'viernes_feliz',
+    title: 'Viernes Feliz',
+    message: 'Viernes feliz! Empieza el fin de semana con 10% de descuento en tu pedido. Solo por nuestra pagina',
+    shortMessage: '10% OFF - Viernes Feliz',
+    discount: 10,
+    start: null,
+    end: null,
+    daysOfWeek: [5],
+    icon: 'fa-fire',
+    gradient: 'linear-gradient(90deg,#DC2626,#F59E0B,#FCD34D,#F59E0B,#DC2626)'
+  },
+  // Ejemplos de promos por fecha específica (descomentar y editar cuando sea necesario):
+  // {
+  //   id: 'halloween_2026',
+  //   title: 'Noche de Brujas',
+  //   message: 'Halloween especial! 10% de descuento en tu pedido. Solo por hoy 31 de octubre',
+  //   shortMessage: '10% OFF - Halloween',
+  //   discount: 10,
+  //   start: '2026-10-31',
+  //   end: '2026-10-31',
+  //   daysOfWeek: null,
+  //   icon: 'fa-ghost',
+  //   gradient: 'linear-gradient(90deg,#1E1B4B,#7C3AED,#F59E0B,#7C3AED,#1E1B4B)'
+  // },
+  // {
+  //   id: 'navidad_2026',
+  //   title: 'Navidad Chicho\'s',
+  //   message: 'Navidad especial! 10% de descuento en tu pedido de diciembre. Solo por nuestra pagina',
+  //   shortMessage: '10% OFF - Especial Navidad',
+  //   discount: 10,
+  //   start: '2026-12-15',
+  //   end: '2026-12-25',
+  //   daysOfWeek: null,
+  //   icon: 'fa-tree',
+  //   gradient: 'linear-gradient(90deg,#064E3B,#DC2626,#FCD34D,#DC2626,#064E3B)'
+  // },
+];
+
+let activePromo = null;
+
+function getActivePromo() {
+  const now = new Date();
+  const today = now.toISOString().split('T')[0]; // YYYY-MM-DD
+  const dayOfWeek = now.getDay();
+
+  for (const promo of PROMOS) {
+    // Verificar rango de fechas si está definido
+    if (promo.start && today < promo.start) continue;
+    if (promo.end && today > promo.end) continue;
+    // Verificar día de la semana si está definido
+    if (promo.daysOfWeek && !promo.daysOfWeek.includes(dayOfWeek)) continue;
+    // Si pasa todas las condiciones, la promo está activa
+    return promo;
+  }
+  return null;
+}
+
+function initPromoSystem() {
+  activePromo = getActivePromo();
+  const topBar = document.querySelector('.top-bar');
+
+  if (activePromo) {
+    // Cambiar top-bar para mostrar la promo
+    topBar.classList.add('has-promo');
+    topBar.style.background = activePromo.gradient || '';
+    topBar.innerHTML = `<i class="fa-solid ${activePromo.icon} promo-icon"></i> ${activePromo.shortMessage} <i class="fa-solid fa-arrow-right" style="margin:0 6px;opacity:0.7"></i> Pide y ahorra!`;
+
+    // Mostrar badge de promo en el carrito
+    const cartPromoBadge = document.getElementById('cartPromoBadge');
+    if (cartPromoBadge) {
+      cartPromoBadge.innerHTML = `<i class="fa-solid ${activePromo.icon}"></i> <span><strong>${activePromo.title}:</strong> ${activePromo.discount}% de descuento en tu pedido (no aplica al domicilio)</span>`;
+      cartPromoBadge.style.display = 'flex';
+    }
+
+    // Actualizar label de descuento en totales
+    const discountLabel = document.getElementById('cartDiscountLabel');
+    if (discountLabel) {
+      discountLabel.textContent = `Descuento ${activePromo.discount}% (${activePromo.title})`;
+    }
+  } else {
+    // Sin promo activa, mantener top-bar original
+    topBar.classList.remove('has-promo');
+    topBar.style.background = '';
+    topBar.innerHTML = `
+      <i class="fa-solid fa-truck-fast"></i> Domicilio 30-40 min en Cali
+      <i class="fa-solid fa-circle-dot"></i> Paga contra entrega o transferencia
+      <i class="fa-solid fa-fire"></i> Sabor a parrilla autentico
+    `;
+    const cartPromoBadge = document.getElementById('cartPromoBadge');
+    if (cartPromoBadge) cartPromoBadge.style.display = 'none';
+  }
+}
+
+function getDiscountAmount(subtotal) {
+  if (!activePromo || activePromo.discount <= 0) return 0;
+  return Math.round(subtotal * activePromo.discount / 100);
+}
 
 /* ================= DOM ================= */
 
@@ -2588,7 +2793,7 @@ const productsData = {
     extras: [],
   },
   HambEspecial: {
-    name: "Hamburguesa Especial",
+    name: "Especial",
     price: 20000,
     extras: [],
   },
@@ -2868,9 +3073,12 @@ function filtrarProductosPorDia() {
   });
 }
 function iniciarSistema() {
+  initPromoSystem();
   actualizarEstadoUI();
   filtrarProductosPorDia();
   setInterval(actualizarEstadoUI, 60000);
+  // Revisar promo cada 5 minutos (por si cambia el día o la hora)
+  setInterval(initPromoSystem, 5 * 60 * 1000);
 }
 document.addEventListener("DOMContentLoaded", iniciarSistema);
 
@@ -3032,12 +3240,13 @@ const cartCount = document.getElementById("cartCount");
 
 function updateCartUI() {
   cartItems.innerHTML = "";
-  let total = 0;
+  let subtotal = 0;
   if (cart.length === 0) {
     cartItems.innerHTML = `<div class="cart-empty"><div class="empty-icon"><i class="fa-solid fa-bag-shopping"></i></div><p>Tu carrito esta vacio</p><span class="empty-hint">Agrega productos del menu para empezar</span></div>`;
+    document.getElementById('cartTotalsSummary').style.display = 'none';
   } else {
     cart.forEach((item, index) => {
-      total += item.price;
+      subtotal += item.price;
       const initials = item.name.substring(0, 2).toUpperCase();
       cartItems.innerHTML += `
         <div class="cart-item">
@@ -3053,8 +3262,23 @@ function updateCartUI() {
           </div>
         </div>`;
     });
+    document.getElementById('cartTotalsSummary').style.display = 'block';
   }
-  const totalFinal = total + domicilioActual;
+
+  // Cálculo de descuento y total
+  const discountAmount = getDiscountAmount(subtotal);
+  const totalFinal = subtotal - discountAmount + domicilioActual;
+
+  // Actualizar UI de totales
+  document.getElementById('cartSubtotal').textContent = '$' + subtotal.toLocaleString();
+  const discountLine = document.getElementById('cartDiscountLine');
+  if (discountAmount > 0) {
+    document.getElementById('cartDiscountValue').textContent = '-$' + discountAmount.toLocaleString();
+    discountLine.style.display = 'flex';
+  } else {
+    discountLine.style.display = 'none';
+  }
+
   cartTotal.textContent = totalFinal.toLocaleString();
   cartCount.textContent = cart.length;
   const fc = document.getElementById("floatingCartCount");
@@ -3260,16 +3484,24 @@ document.getElementById("sendWhatsApp").addEventListener("click", function () {
   saveCurrentClient();
 
   let message = `*NUEVO PEDIDO - Chicho's Asados*\n\n`;
-  let total = 0;
+  if (activePromo) {
+    message += `${activePromo.message}\n\n`;
+  }
+  let subtotal = 0;
   cart.forEach((item) => {
     message += `*${item.quantity}x* ${item.name}\n`;
     if (item.extras.length) message += `   + ${item.extras.join(", ")}\n`;
     if (item.notes) message += `   Obs: ${item.notes}\n`;
     message += `   $${item.price.toLocaleString()}\n\n`;
-    total += item.price;
+    subtotal += item.price;
   });
-  const totalFinal = total + domicilioActual;
+  const discountAmount = getDiscountAmount(subtotal);
+  const totalFinal = subtotal - discountAmount + domicilioActual;
   message += `*RESUMEN DEL PEDIDO*\n`;
+  message += `Subtotal: $${subtotal.toLocaleString()}\n`;
+  if (discountAmount > 0 && activePromo) {
+    message += `Descuento ${activePromo.discount}% (${activePromo.title}): -$${discountAmount.toLocaleString()}\n`;
+  }
   message += `Barrio: ${barrio}\n`;
   message += `Domicilio: $${domicilioActual.toLocaleString()}\n`;
   message += `Pago: ${paymentMethodFinal}\n`;
